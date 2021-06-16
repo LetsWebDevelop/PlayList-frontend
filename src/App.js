@@ -3,14 +3,14 @@ import { Switch, Route } from "react-router-dom";
 
 import NavBar from "./components/NavBar";
 import HomePage from "./pages/HomePage";
-// import Login from "./pages/Login";
+import Login from "./pages/Login";
 
 function App() {
   return (
     <div>
       <NavBar />
       <Switch>
-        {/* <Route path="/login" component={Login} /> */}
+        <Route path="/login" component={Login} />
         <Route path="/" component={HomePage} exact />
       </Switch>
     </div>

@@ -1,14 +1,15 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 import { setSpotifyToken } from "../store/spotifyToken/actions";
-import { selectSpotifyToken } from "../store/spotifyToken/selectors";
-import SpotifyLoginButton from "../spotify/LoginButton";
+import { selectSPOTIFYToken } from "../store/spotifyToken/selectors";
+
 import SpotifyPlayer from "react-spotify-web-playback";
 
 export default function HomePage() {
   const dispatch = useDispatch();
-  const token = useSelector(selectSpotifyToken);
+  const token = useSelector(selectSPOTIFYToken);
 
   useEffect(() => {
     if (!token) {
@@ -35,9 +36,16 @@ export default function HomePage() {
     <div>
       <h1 style={{ textAlign: "center" }}>Welcome to PlayList</h1>
       {!token && (
-        <div style={{ display: "flex", justifyContent: "center" }}>
-          <SpotifyLoginButton />
-        </div>
+        <p style={{ textAlign: "center" }}>
+          You have to{" "}
+          <Link
+            to="/login"
+            activeStyle={{ color: "lightgreen", marginTop: "20px" }}
+          >
+            Login{" "}
+          </Link>
+          to gain access to the app
+        </p>
       )}
       {token && (
         <SpotifyPlayer

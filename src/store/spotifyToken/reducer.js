@@ -1,4 +1,4 @@
-import { SET_TOKEN } from "./actions";
+import { SET_SPOTIFY_TOKEN } from "./actions";
 
 const initialState = {
   token: null,
@@ -6,7 +6,7 @@ const initialState = {
 
 export default function spotifyTokenReducer(state = initialState, action) {
   switch (action.type) {
-    case SET_TOKEN:
+    case SET_SPOTIFY_TOKEN:
       return { token: action.payload };
     default:
       return state;
