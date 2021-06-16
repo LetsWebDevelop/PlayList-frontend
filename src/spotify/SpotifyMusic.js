@@ -91,22 +91,20 @@ export default function SearchSpotifyMusic() {
             </button>
             {tracks.artists?.map((artists) => {
               return (
-                <div>
-                  <div style={{ marginLeft: "5px", color: "grey" }}>
-                    {" "}
-                    {artists.name.includes(searchInput) ? (
-                      <p
-                        style={{
-                          marginLeft: "5px",
-                          color: "black",
-                        }}
-                      >
-                        {artists.name} -
-                      </p>
-                    ) : (
-                      <p>{artists.name} - </p>
-                    )}
-                  </div>
+                <div style={{ marginLeft: "5px", color: "grey" }}>
+                  {" "}
+                  {artists.name.includes(searchInput) ? (
+                    <p
+                      style={{
+                        marginLeft: "5px",
+                        color: "black",
+                      }}
+                    >
+                      {artists.name} -
+                    </p>
+                  ) : (
+                    <p>{artists.name} - </p>
+                  )}
                 </div>
               );
             })}
