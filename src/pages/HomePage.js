@@ -5,8 +5,7 @@ import { Link } from "react-router-dom";
 import { setSpotifyToken } from "../store/spotifyToken/actions";
 import { selectSPOTIFYToken } from "../store/spotifyToken/selectors";
 
-import SpotifyPlayer from "react-spotify-web-playback";
-import SearchSpotifyMusic from "../spotify/SearchSpotifyMusic";
+import SpotifyMusic from "../spotify/SpotifyMusic";
 
 export default function HomePage() {
   const dispatch = useDispatch();
@@ -45,15 +44,7 @@ export default function HomePage() {
           to gain access to the app
         </p>
       )}
-      {token && (
-        <div>
-          <SearchSpotifyMusic />
-          <SpotifyPlayer
-            token={token}
-            uris={["spotify:artist:6HQYnRM4OzToCYPpVBInuU"]}
-          />
-        </div>
-      )}
+      {token && <SpotifyMusic />}
     </div>
   );
 }

@@ -4,9 +4,12 @@ import { useSelector } from "react-redux";
 
 import { selectSPOTIFYToken } from "../store/spotifyToken/selectors";
 
+import SpotifyPlayer from "react-spotify-web-playback";
+
 export default function SearchSpotifyMusic() {
   const [searchInput, setSearchInput] = useState("");
   const [song, setSong] = useState("");
+  const [play, setPlay] = useState("");
   //   const initialOffset = 0;
   const [offset, setOffset] = useState(0);
   const token = useSelector(selectSPOTIFYToken);
@@ -72,11 +75,60 @@ export default function SearchSpotifyMusic() {
       ></input>
       {song.items?.map((tracks) => {
         return (
-          <div key={tracks.id} style={{ border: "1px solid grey" }}>
+          <div
+            key={tracks.id}
+            style={{
+              display: "flex",
+              flexWrap: "wrap",
+              border: "1px solid grey",
+            }}
+          >
+            <button
+              style={{ cursor: "pointer" }}
+              onClick={(event) => setPlay(tracks.uri)}
+            >
+              Play Song
+            </button>
             {tracks.artists?.map((artists) => {
-              return <p>{artists.name}</p>;
+              return (
+                <div>
+                  <p style={{ marginLeft: "5px", color: "grey" }}>
+                    {" "}
+                    {artists.name.includes(searchInput) ? (
+                      <p
+                        style={{
+                          marginLeft: "5px",
+                          color: "black",
+                        }}
+                      >
+                        {artists.name} -
+                      </p>
+                    ) : (
+                      <p>{artists.name} - </p>
+                    )}
+                  </p>
+                </div>
+              );
             })}
-            <p>{tracks.name}</p>
+            {tracks.name.includes(searchInput) ? (
+              <p
+                style={{
+                  color: "black",
+                  marginLeft: "5px",
+                }}
+              >
+                {tracks.name}
+              </p>
+            ) : (
+              <p
+                style={{
+                  color: "grey",
+                  marginLeft: "5px",
+                }}
+              >
+                {tracks.name}
+              </p>
+            )}
           </div>
         );
       })}
@@ -86,6 +138,11 @@ export default function SearchSpotifyMusic() {
         <p>No more songs</p>
       ) : (
         <button onClick={loadMore}>Load more</button>
+      )}
+      {token && (
+        <div>
+          <SpotifyPlayer token={token} uris={play} />
+        </div>
       )}
     </div>
   );
