@@ -6,6 +6,7 @@ import { setSpotifyToken } from "../store/spotifyToken/actions";
 import { selectSPOTIFYToken } from "../store/spotifyToken/selectors";
 
 import SpotifyPlayer from "react-spotify-web-playback";
+import SearchSpotifyMusic from "../spotify/SearchSpotifyMusic";
 
 export default function HomePage() {
   const dispatch = useDispatch();
@@ -38,20 +39,20 @@ export default function HomePage() {
       {!token && (
         <p style={{ textAlign: "center" }}>
           You have to{" "}
-          <Link
-            to="/login"
-            activeStyle={{ color: "lightgreen", marginTop: "20px" }}
-          >
+          <Link to="/login" style={{ color: "lightgreen", marginTop: "20px" }}>
             Login{" "}
           </Link>
           to gain access to the app
         </p>
       )}
       {token && (
-        <SpotifyPlayer
-          token={token}
-          uris={["spotify:artist:6HQYnRM4OzToCYPpVBInuU"]}
-        />
+        <div>
+          <SearchSpotifyMusic />
+          <SpotifyPlayer
+            token={token}
+            uris={["spotify:artist:6HQYnRM4OzToCYPpVBInuU"]}
+          />
+        </div>
       )}
     </div>
   );
