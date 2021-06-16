@@ -8,12 +8,12 @@ export default function NavBar() {
         justifyContent: "space-evenly",
       }}
     >
-      <NavLink to="/login" activeStyle={{ color: "lightgreen" }}>
-        Login
-      </NavLink>
-
-      <NavLink to="/" activeStyle={{ color: "lightgreen" }} exact>
-        HomePage
+      <NavLink
+        to="/"
+        activeStyle={{ color: "lightgreen", marginTop: "20px" }}
+        exact
+      >
+        PlayList()
       </NavLink>
     </div>
   );
