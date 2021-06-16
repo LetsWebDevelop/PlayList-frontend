@@ -1,6 +1,10 @@
 import { NavLink } from "react-router-dom";
+// import { useSelector } from "react-redux";
+// import { selectSpotifyToken } from "../store/spotifyToken/selectors";
 
 export default function NavBar() {
+  // const token = useSelector(selectSpotifyToken);
+
   return (
     <div
       style={{
@@ -8,12 +12,12 @@ export default function NavBar() {
         justifyContent: "space-evenly",
       }}
     >
-      <NavLink to="/login" activeStyle={{ color: "lightgreen" }}>
-        Login
-      </NavLink>
-
-      <NavLink to="/" activeStyle={{ color: "lightgreen" }} exact>
-        HomePage
+      <NavLink
+        to="/"
+        activeStyle={{ color: "lightgreen", marginTop: "20px" }}
+        exact
+      >
+        PlayList()
       </NavLink>
     </div>
   );
