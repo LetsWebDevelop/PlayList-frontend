@@ -6,6 +6,7 @@ import { setSpotifyToken } from "../store/spotifyToken/actions";
 import { selectSPOTIFYToken } from "../store/spotifyToken/selectors";
 
 import SpotifyMusic from "../spotify/SpotifyMusic";
+import MyPlayLists from "../components/MyPlayLists";
 
 export default function HomePage() {
   const dispatch = useDispatch();
@@ -44,7 +45,17 @@ export default function HomePage() {
           to gain access to the app
         </p>
       )}
-      {token && <SpotifyMusic />}
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "row",
+          justifyContent: "space-between",
+          flexWrap: "wrap",
+        }}
+      >
+        {token && <MyPlayLists />}
+        {token && <SpotifyMusic />}
+      </div>
     </div>
   );
 }

@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 
 import { selectSPOTIFYToken } from "../store/spotifyToken/selectors";
@@ -9,7 +9,8 @@ import SpotifyPlayer from "react-spotify-web-playback";
 export default function SearchSpotifyMusic() {
   const [searchInput, setSearchInput] = useState("");
   const [song, setSong] = useState("");
-  const [play, setPlay] = useState("");
+  const [play, setPlay] = useState(false);
+  const [track, setTrack] = useState("");
   //   const initialOffset = 0;
   const [offset, setOffset] = useState(0);
   const token = useSelector(selectSPOTIFYToken);
@@ -61,15 +62,17 @@ export default function SearchSpotifyMusic() {
   };
   const resetOffset = (event) => {
     event.preventDefault();
-    setOffset(offset === 0);
+    setOffset(offset - offset);
     fetchMoreSongs();
   };
 
+  useEffect(() => setPlay(true), [track]);
+
   return (
-    <div>
+    <div style={{ fontSize: "10px" }}>
       <input
         type="text"
-        placeholder="search music"
+        placeholder="Spotify Search"
         value={searchInput}
         onChange={handleOnChange}
       ></input>
@@ -81,22 +84,20 @@ export default function SearchSpotifyMusic() {
               display: "flex",
               flexWrap: "wrap",
               border: "1px solid grey",
+              maxWidth: "500px",
+              cursor: "pointer",
+              marginBottom: "5px",
+              padding: "5px",
             }}
+            onClick={(event) => setTrack(tracks.uri)}
           >
-            <button
-              style={{ cursor: "pointer" }}
-              onClick={(event) => setPlay(tracks.uri)}
-            >
-              Play Song
-            </button>
             {tracks.artists?.map((artists) => {
               return (
-                <div style={{ marginLeft: "5px", color: "grey" }}>
+                <div style={{ marginLeft: "3px", color: "grey" }}>
                   {" "}
                   {artists.name.includes(searchInput) ? (
                     <p
                       style={{
-                        marginLeft: "5px",
                         color: "black",
                       }}
                     >
@@ -108,25 +109,19 @@ export default function SearchSpotifyMusic() {
                 </div>
               );
             })}
-            {tracks.name.includes(searchInput) ? (
-              <p
-                style={{
-                  color: "black",
-                  marginLeft: "5px",
-                }}
-              >
-                {tracks.name}
-              </p>
-            ) : (
-              <p
-                style={{
-                  color: "grey",
-                  marginLeft: "5px",
-                }}
-              >
-                {tracks.name}
-              </p>
-            )}
+            <div style={{ marginLeft: "3px", color: "grey" }}>
+              {tracks.name.includes(searchInput) ? (
+                <p
+                  style={{
+                    color: "black",
+                  }}
+                >
+                  {tracks.name}
+                </p>
+              ) : (
+                <p>{tracks.name}</p>
+              )}
+            </div>
           </div>
         );
       })}
@@ -135,11 +130,18 @@ export default function SearchSpotifyMusic() {
       {song.next === null ? (
         <p>No more songs</p>
       ) : (
-        <button onClick={loadMore}>Load more</button>
+        searchInput.length >= 1 && <button onClick={loadMore}>Load more</button>
       )}
       {token && (
         <div>
-          <SpotifyPlayer token={token} uris={play} />
+          <SpotifyPlayer
+            token={token}
+            callback={(state) => {
+              if (!state.isPlaying) setPlay(false);
+            }}
+            play={play}
+            uris={track ? [track] : []}
+          />
         </div>
       )}
     </div>

@@ -1,5 +1,7 @@
 import { NavLink } from "react-router-dom";
 
+import SpotifyLoginButton from "../spotify/LoginButton";
+
 export default function NavBar() {
   return (
     <div
@@ -15,6 +17,9 @@ export default function NavBar() {
       >
         PlayList()
       </NavLink>
+      <div style={{ marginTop: "20px" }}>
+        <SpotifyLoginButton />
+      </div>
     </div>
   );
 }
