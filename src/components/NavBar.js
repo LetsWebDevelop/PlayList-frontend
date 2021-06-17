@@ -7,12 +7,13 @@ export default function NavBar() {
     <div
       style={{
         display: "flex",
-        justifyContent: "space-evenly",
+        justifyContent: "space-around",
       }}
     >
       <NavLink
         to="/"
-        activeStyle={{ color: "lightgreen", marginTop: "20px" }}
+        activeStyle={{ color: "lightgreen" }}
+        style={{ marginTop: "20px" }}
         exact
       >
         PlayList()

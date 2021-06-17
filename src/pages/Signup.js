@@ -1,10 +1,7 @@
-import SpotifyLoginButton from "../spotify/LoginButton";
-import { Link } from "react-router-dom";
-
-export default function LoginPage() {
+export default function SignupPage() {
   return (
     <div>
-      <h1 style={{ textAlign: "center" }}>Login Page</h1>
+      <h1 style={{ textAlign: "center" }}>Signup Page</h1>
 
       <div
         style={{
@@ -13,6 +10,11 @@ export default function LoginPage() {
           flexDirection: "column",
         }}
       >
+        <input
+          type="text"
+          placeholder="username"
+          style={{ textAlign: "center", alignSelf: "center" }}
+        ></input>
         <input
           type="email"
           placeholder="email"
@@ -23,16 +25,7 @@ export default function LoginPage() {
           placeholder="password"
           style={{ textAlign: "center", alignSelf: "center" }}
         ></input>
-        <button style={{ alignSelf: "center", marginTop: "5px" }}>Login</button>
-        <div
-          style={{
-            alignSelf: "center",
-            fontSize: "12px",
-            marginTop: "5px",
-          }}
-        >
-          <Link to="/signup">Signup here</Link>
-        </div>
+        <button style={{ alignSelf: "center" }}>Submit</button>
       </div>
     </div>
   );

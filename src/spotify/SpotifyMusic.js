@@ -133,7 +133,11 @@ export default function SearchSpotifyMusic() {
         searchInput.length >= 1 && <button onClick={loadMore}>Load more</button>
       )}
       {token && (
-        <div>
+        <div
+          style={{
+            marginTop: "10px",
+          }}
+        >
           <SpotifyPlayer
             token={token}
             callback={(state) => {
