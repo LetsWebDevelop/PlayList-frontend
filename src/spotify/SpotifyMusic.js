@@ -69,7 +69,7 @@ export default function SearchSpotifyMusic() {
   useEffect(() => setPlay(true), [track]);
 
   return (
-    <div style={{ fontSize: "10px" }}>
+    <div style={{ fontSize: "10px", marginRight: "20px" }}>
       <input
         type="text"
         placeholder="Spotify Search"
@@ -85,6 +85,7 @@ export default function SearchSpotifyMusic() {
               flexWrap: "wrap",
               border: "1px solid grey",
               maxWidth: "500px",
+              minWidth: "500px",
               cursor: "pointer",
               marginBottom: "5px",
               padding: "5px",
@@ -136,6 +137,10 @@ export default function SearchSpotifyMusic() {
         <div
           style={{
             marginTop: "10px",
+            marginRight: "20px",
+            marginBottom: "10px",
+            maxWidth: "500px",
+            minWidth: "500px",
           }}
         >
           <SpotifyPlayer

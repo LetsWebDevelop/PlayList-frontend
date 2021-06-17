@@ -20,6 +20,8 @@ export default function SignupPage() {
   }, [userToken, history]);
 
   const submitForm = (event) => {
+    event.preventDefault();
+
     dispatch(signUp(userName, email, password));
 
     setUserName("");

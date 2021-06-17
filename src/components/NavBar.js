@@ -1,8 +1,14 @@
 import { NavLink } from "react-router-dom";
 
 import SpotifyLoginButton from "../spotify/LoginButton";
+import Logout from "./LogoutButton";
+
+import { selectUserToken } from "../store/user/selectors";
+import { useSelector } from "react-redux";
 
 export default function NavBar() {
+  const userToken = useSelector(selectUserToken);
+
   return (
     <div
       style={{
@@ -18,9 +24,13 @@ export default function NavBar() {
       >
         PlayList()
       </NavLink>
-      <div style={{ marginTop: "20px" }}>
-        <SpotifyLoginButton />
-      </div>
+      {userToken && (
+        <>
+          <SpotifyLoginButton />
+
+          <Logout />
+        </>
+      )}
     </div>
   );
 }

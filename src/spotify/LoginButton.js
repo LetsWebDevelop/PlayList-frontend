@@ -30,7 +30,7 @@ export default function SpotifyLoginButton() {
   };
 
   return (
-    <div>
+    <div style={{ marginTop: "20px" }}>
       {token ? (
         <button
           onClick={handleLogin}
