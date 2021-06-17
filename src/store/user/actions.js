@@ -80,17 +80,17 @@ export const login = (email, password) => {
 export const getUserWithStoredToken = () => {
   return async (dispatch, getState) => {
     // get token from the state
-    const token = selectUserToken(getState());
+    const userToken = selectUserToken(getState());
 
     // if we have no token, stop
-    if (token === null) return;
+    if (userToken === null) return;
 
     dispatch(appLoading());
     try {
       // if we do have a token,
       // check wether it is still valid or if it is expired
       const response = await axios.get(`${apiUrl}/me`, {
-        headers: { Authorization: `Bearer ${token}` },
+        headers: { Authorization: `Bearer ${userToken}` },
       });
 
       // token is still valid
