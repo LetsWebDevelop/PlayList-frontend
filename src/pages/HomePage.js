@@ -20,6 +20,7 @@ export default function HomePage() {
       // console.log(data.access_token);
       const spotifyToken = data.access_token;
       // console.log("spotify token:", spotifyToken);
+      localStorage.setItem("spotifyToken", spotifyToken);
       dispatch(setSpotifyToken(spotifyToken));
     }
   }, [dispatch, spotifyToken]);

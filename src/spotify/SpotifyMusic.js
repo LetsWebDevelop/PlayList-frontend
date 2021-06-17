@@ -1,8 +1,5 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
-
-import { selectSPOTIFYToken } from "../store/spotifyToken/selectors";
 
 import SpotifyPlayer from "react-spotify-web-playback";
 
@@ -13,14 +10,14 @@ export default function SearchSpotifyMusic() {
   const [track, setTrack] = useState("");
   //   const initialOffset = 0;
   const [offset, setOffset] = useState(0);
-  const token = useSelector(selectSPOTIFYToken);
+  const spotifyToken = localStorage.getItem("spotifyToken");
 
   async function fetchSpotifySongs() {
     const response = await axios.get(
       `https://api.spotify.com/v1/search?q=${searchInput}&type=track%2Cartist&limit=50`,
       {
         headers: {
-          Authorization: `Bearer ${token}`,
+          Authorization: `Bearer ${spotifyToken}`,
         },
       }
     );
@@ -41,7 +38,7 @@ export default function SearchSpotifyMusic() {
       `https://api.spotify.com/v1/search?q=${searchInput}&type=track%2Cartist&offset=${offset}&limit=${limit}`,
       {
         headers: {
-          Authorization: `Bearer ${token}`,
+          Authorization: `Bearer ${spotifyToken}`,
         },
       }
     );
@@ -133,7 +130,7 @@ export default function SearchSpotifyMusic() {
       ) : (
         searchInput.length >= 1 && <button onClick={loadMore}>Load more</button>
       )}
-      {token && (
+      {spotifyToken && (
         <div
           style={{
             marginTop: "10px",
@@ -144,7 +141,7 @@ export default function SearchSpotifyMusic() {
           }}
         >
           <SpotifyPlayer
-            token={token}
+            token={spotifyToken}
             callback={(state) => {
               if (!state.isPlaying) setPlay(false);
             }}
