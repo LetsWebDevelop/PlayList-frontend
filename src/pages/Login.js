@@ -1,4 +1,3 @@
-import SpotifyLoginButton from "../spotify/LoginButton";
 import { Link } from "react-router-dom";
 
 export default function LoginPage() {
