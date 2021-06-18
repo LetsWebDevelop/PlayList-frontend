@@ -22,7 +22,6 @@ export default function SearchSpotifyMusic() {
       }
     );
 
-    console.log(response.data.tracks);
     setSong(response.data.tracks);
   }
   const handleOnChange = (event) => {
@@ -42,7 +41,7 @@ export default function SearchSpotifyMusic() {
         },
       }
     );
-    console.log("next:", response.data.tracks);
+
     setSong(response.data.tracks);
   }
 

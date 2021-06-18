@@ -5,12 +5,14 @@ import { useHistory } from "react-router-dom";
 
 import { createNewPlaylist } from "../store/createPlaylist/actions";
 import { fetchPlaylists } from "../store/getPlaylists/actions";
-import { selectUserToken } from "../store/user/selectors";
+import { selectUserToken, selectUser } from "../store/user/selectors";
+import { selectPlaylists } from "../store/getPlaylists/selectors";
 
 export default function MyPlayLists() {
   const dispatch = useDispatch();
   const [name, setName] = useState("");
   const userToken = useSelector(selectUserToken);
+  const playlists = useSelector(selectPlaylists);
   const history = useHistory();
 
   useEffect(() => {
@@ -40,6 +42,13 @@ export default function MyPlayLists() {
         <button type="submit" onClick={submitPlaylistHandler}>
           Add Playlist
         </button>
+        {playlists.map((playlist) => {
+          return (
+            <div key={playlist.id}>
+              <p>{playlist.name}</p>
+            </div>
+          );
+        })}
       </div>
     </div>
   );
