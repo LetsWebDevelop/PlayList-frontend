@@ -5,7 +5,7 @@ import { useHistory } from "react-router-dom";
 import { selectSPOTIFYToken } from "../store/spotifyToken/selectors";
 import { setSpotifyToken } from "../store/spotifyToken/actions";
 
-export default function Redirect() {
+export default function SpotifyRedirect() {
   const dispatch = useDispatch();
   const history = useHistory();
   const spotifyToken = useSelector(selectSPOTIFYToken);

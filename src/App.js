@@ -9,7 +9,7 @@ import NavBar from "./components/NavBar";
 import HomePage from "./pages/HomePage";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
-import Redirect from "./pages/Redirect";
+import SpotifyRedirect from "./pages/SpotifyRedirect";
 import { setSpotifyToken } from "./store/spotifyToken/actions";
 
 function App() {
@@ -31,7 +31,7 @@ function App() {
       <Switch>
         <Route path="/signup" component={Signup} />
         <Route path="/login" component={Login} />
-        <Route path="/redirect" component={Redirect} />
+        <Route path="/spotifyredirect" component={SpotifyRedirect} />
         <Route path="/" component={HomePage} exact />
       </Switch>
     </div>
