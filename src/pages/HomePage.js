@@ -1,41 +1,21 @@
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { Link, useHistory } from "react-router-dom";
 
 import { selectUserToken } from "../store/user/selectors";
-import { setSpotifyToken } from "../store/spotifyToken/actions";
+
 import { selectSPOTIFYToken } from "../store/spotifyToken/selectors";
 
 import SpotifyMusic from "../spotify/SpotifyMusic";
 import MyPlayLists from "../components/MyPlayLists";
 
 export default function HomePage() {
-  const dispatch = useDispatch();
   const spotifyToken = useSelector(selectSPOTIFYToken);
   const userToken = useSelector(selectUserToken);
+  const history = useHistory();
 
-  useEffect(() => {
-    if (!spotifyToken) {
-      const data = getToken(window.location.hash);
-      // console.log(data.access_token);
-      const spotifyToken = data.access_token;
-      // console.log("spotify token:", spotifyToken);
-      localStorage.setItem("spotifyToken", spotifyToken);
-      dispatch(setSpotifyToken(spotifyToken));
-    }
-  }, [dispatch, spotifyToken]);
-
-  const getToken = (hash) => {
-    const afterHashTag = hash.substring(1);
-    const paramsInUrl = afterHashTag.split("&");
-    const paramsSplit = paramsInUrl.reduce((accumulater, currentValue) => {
-      const [key, value] = currentValue.split("=");
-      accumulater[key] = value;
-      return accumulater;
-    }, {});
-
-    return paramsSplit;
-  };
+  if (!userToken) {
+    history.push("/login");
+  }
 
   return (
     <div>

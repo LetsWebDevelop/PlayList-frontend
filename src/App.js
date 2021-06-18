@@ -9,12 +9,20 @@ import NavBar from "./components/NavBar";
 import HomePage from "./pages/HomePage";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
+import Redirect from "./pages/Redirect";
+import { setSpotifyToken } from "./store/spotifyToken/actions";
 
 function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getUserWithStoredToken());
+    const spotifyToken = localStorage.getItem("spotifyToken");
+    if (!spotifyToken) {
+      return null;
+    } else {
+      return dispatch(setSpotifyToken(spotifyToken));
+    }
   }, [dispatch]);
 
   return (
@@ -23,6 +31,7 @@ function App() {
       <Switch>
         <Route path="/signup" component={Signup} />
         <Route path="/login" component={Login} />
+        <Route path="/redirect" component={Redirect} />
         <Route path="/" component={HomePage} exact />
       </Switch>
     </div>
