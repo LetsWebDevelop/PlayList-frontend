@@ -10,7 +10,7 @@ export default function SpotifyLoginButton() {
 
   const CLIENT_ID = client_id;
   const SPOTIFY_AUTHORIZE_ENDPOINT = "https://accounts.spotify.com/authorize";
-  const REDIRECT_URL = "http://localhost:3000/redirect";
+  const REDIRECT_URL = "http://localhost:3000/spotifyredirect";
   const SPACE_DELIMITER = "%20";
   const SCOPES = [
     "streaming",
