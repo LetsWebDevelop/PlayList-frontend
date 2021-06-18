@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 
 import { createNewPlaylist } from "../store/createPlaylist/actions";
+import { fetchPlaylists } from "../store/getPlaylists/actions";
 import { selectUserToken } from "../store/user/selectors";
 
 export default function MyPlayLists() {
@@ -16,7 +17,9 @@ export default function MyPlayLists() {
     if (!userToken) {
       history.push("/login");
     }
-  }, [userToken, history]);
+
+    dispatch(fetchPlaylists());
+  }, [dispatch, userToken, history]);
 
   const submitPlaylistHandler = (event) => {
     event.preventDefault();
