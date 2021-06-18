@@ -34,7 +34,6 @@ export default function HomePage() {
           display: "flex",
           flexDirection: "row",
           justifyContent: "space-between",
-          flexWrap: "wrap",
         }}
       >
         {userToken && <MyPlayLists />}
