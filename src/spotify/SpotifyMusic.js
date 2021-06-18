@@ -57,8 +57,7 @@ export default function SearchSpotifyMusic() {
     setOffset(offset - 50);
     fetchMoreSongs();
   };
-  const resetOffset = (event) => {
-    event.preventDefault();
+  const resetOffset = () => {
     setOffset(offset - offset);
     fetchMoreSongs();
   };
