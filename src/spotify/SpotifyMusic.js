@@ -90,7 +90,10 @@ export default function SearchSpotifyMusic() {
           >
             {tracks.artists?.map((artists) => {
               return (
-                <div style={{ marginLeft: "3px", color: "grey" }}>
+                <div
+                  key={artists.id}
+                  style={{ marginLeft: "3px", color: "grey" }}
+                >
                   {" "}
                   {artists.name.includes(searchInput) ? (
                     <p
