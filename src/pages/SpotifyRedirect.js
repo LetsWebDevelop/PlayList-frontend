@@ -36,6 +36,7 @@ export default function SpotifyRedirect() {
   if (spotifyToken) {
     history.push("/");
   }
+
   return (
     <div>
       <h3>Connected to Spotify</h3>
