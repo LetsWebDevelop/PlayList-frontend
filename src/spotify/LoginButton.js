@@ -6,9 +6,7 @@ import { useSelector } from "react-redux";
 import { selectSPOTIFYToken } from "../store/spotifyToken/selectors";
 
 export default function SpotifyLoginButton() {
-  const token = useSelector(selectSPOTIFYToken);
-  // const AUTH_URL =
-  //   "https://accounts.spotify.com/authorize?client_id=43161e27bfce4eb8810ae3b62098d649&response_type=code&redirect_uri=http://localhost:3000/&scope=streaming%20user-read-email%20user-read-private%20user-library-read%20user-library-modify%20user-read-playback-state%20user-modify-playback-state";
+  const spotifyToken = useSelector(selectSPOTIFYToken);
 
   const CLIENT_ID = client_id;
   const SPOTIFY_AUTHORIZE_ENDPOINT = "https://accounts.spotify.com/authorize";
@@ -31,7 +29,7 @@ export default function SpotifyLoginButton() {
 
   return (
     <div style={{ marginTop: "20px" }}>
-      {token ? (
+      {spotifyToken ? (
         <button
           onClick={handleLogin}
           style={{
