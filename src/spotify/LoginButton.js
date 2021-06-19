@@ -28,7 +28,7 @@ export default function SpotifyLoginButton() {
   };
 
   return (
-    <div style={{ marginTop: "20px" }}>
+    <div>
       {spotifyToken ? (
         <button
           onClick={handleLogin}

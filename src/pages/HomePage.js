@@ -8,6 +8,7 @@ import { selectSPOTIFYToken } from "../store/spotifyToken/selectors";
 import SpotifyMusic from "../spotify/SpotifyMusic";
 import MyPlayLists from "../components/MyPlayLists";
 import Player from "../components/Player";
+import SearchMusic from "../components/SearchMusic";
 
 export default function HomePage() {
   const spotifyToken = useSelector(selectSPOTIFYToken);
@@ -20,26 +21,13 @@ export default function HomePage() {
 
   return (
     <div>
-      <h1 style={{ textAlign: "center" }}>Welcome to PlayList</h1>
-      {!userToken && (
-        <p style={{ textAlign: "center" }}>
-          You have to{" "}
-          <Link to="/login" style={{ color: "lightgreen", marginTop: "20px" }}>
-            Login{" "}
-          </Link>
-          to gain access to the app
-        </p>
-      )}
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "row",
-          justifyContent: "space-between",
-        }}
-      >
+      <div>{spotifyToken && userToken && <SearchMusic />}</div>
+      <div style={{ display: "flex", alignSelf: "flex-start" }}>
         {userToken && <MyPlayLists />}
+
         {spotifyToken && userToken && <SpotifyMusic />}
       </div>
+
       {spotifyToken && userToken && <Player />}
     </div>
   );

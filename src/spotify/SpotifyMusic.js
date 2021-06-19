@@ -1,114 +1,47 @@
-import axios from "axios";
 import { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import { setSpotifySong } from "../store/playSong/actions";
 
-export default function SearchSpotifyMusic() {
-  const [searchInput, setSearchInput] = useState("");
-  const [song, setSong] = useState("");
-  const [nextResults, setNextResults] = useState("");
-  const [previousResults, setPreviousResults] = useState("");
-  const [APInext, setAPInext] = useState("");
-  const [APIprevious, setAPIprevious] = useState("");
+import { selectSpotifyMusic } from "../store/spotifyMusic/selectors";
+import { selectSearchInput } from "../store/searchInput/selectors";
+
+export default function SpotifyMusic() {
+  const search = useSelector(selectSearchInput);
+  const song = useSelector(selectSpotifyMusic);
+
   const [track, setTrack] = useState("");
 
-  const spotifyToken = localStorage.getItem("spotifyToken");
   const dispatch = useDispatch();
-
-  async function fetchSpotifySongs() {
-    const response = await axios.get(
-      `https://api.spotify.com/v1/search?q=${searchInput}&type=track%2Cartist&limit=50`,
-      {
-        headers: {
-          Authorization: `Bearer ${spotifyToken}`,
-        },
-      }
-    );
-    console.log(response.data.tracks);
-
-    setSong(response.data.tracks);
-  }
-
-  async function fetchMoreSongs() {
-    const response = await axios.get(`${APInext}`, {
-      headers: {
-        Authorization: `Bearer ${spotifyToken}`,
-      },
-    });
-    setSong(response.data.tracks);
-  }
-
-  async function fetchPreviousSongs() {
-    const response = await axios.get(`${APIprevious}`, {
-      headers: {
-        Authorization: `Bearer ${spotifyToken}`,
-      },
-    });
-    setSong(response.data.tracks);
-  }
-
-  const handleOnChange = (event) => {
-    event.preventDefault();
-    setSearchInput(event.target.value);
-    setNextResults(song?.next);
-    setAPInext(nextResults);
-    setPreviousResults(song?.previous);
-    setAPIprevious(previousResults);
-    console.log("next API:", APInext);
-    console.log("previous API:", APIprevious);
-    fetchSpotifySongs();
-  };
-
-  const loadMore = (event) => {
-    event.preventDefault();
-    console.log(song);
-    setNextResults(song?.next);
-    setAPInext(nextResults);
-    setPreviousResults(song?.previous);
-    setAPIprevious(previousResults);
-    console.log("next API:", APInext);
-    console.log("previous API:", APIprevious);
-    fetchMoreSongs();
-  };
-
-  const previousSongs = (event) => {
-    event.preventDefault();
-    console.log(song);
-    setNextResults(song?.next);
-    setAPInext(nextResults);
-    setPreviousResults(song?.previous);
-    setAPIprevious(previousResults);
-    console.log("next API:", APInext);
-    console.log("previous API:", APIprevious);
-
-    fetchPreviousSongs();
-  };
 
   useEffect(() => {
     dispatch(setSpotifySong(track));
   }, [dispatch, track]);
 
   return (
-    <div style={{ fontSize: "10px", marginRight: "20px" }}>
-      <input
-        type="text"
-        placeholder="Spotify Search"
-        value={searchInput}
-        onChange={handleOnChange}
-      ></input>
+    <div
+      style={{
+        textAlign: "left",
+        fontSize: "10px",
+        marginRight: "20px",
+        marginLeft: "20px",
+        maxHeight: "80vh",
+        overflowY: "auto",
+      }}
+    >
       {song.items?.map((tracks) => {
         return (
           <div
             key={tracks.id}
             style={{
+              textAlign: "left",
               display: "flex",
               flexWrap: "wrap",
-              border: "1px solid grey",
-              maxWidth: "500px",
-              minWidth: "500px",
+              borderBottom: "1px solid grey",
+              height: "15px",
+              maxWidth: "80vw",
+              minWidth: "80vw",
               cursor: "pointer",
-              marginBottom: "5px",
               padding: "5px",
             }}
             onClick={() => setTrack(tracks.uri)}
@@ -120,7 +53,7 @@ export default function SearchSpotifyMusic() {
                   style={{ marginLeft: "3px", color: "grey" }}
                 >
                   {" "}
-                  {artists.name.includes(searchInput) ? (
+                  {artists.name.includes(search) ? (
                     <p
                       style={{
                         color: "black",
@@ -135,7 +68,7 @@ export default function SearchSpotifyMusic() {
               );
             })}
             <div style={{ marginLeft: "3px", color: "grey" }}>
-              {tracks.name.includes(searchInput) ? (
+              {tracks.name.includes(search) ? (
                 <p
                   style={{
                     color: "black",
@@ -150,17 +83,6 @@ export default function SearchSpotifyMusic() {
           </div>
         );
       })}
-
-      {APIprevious === "" ? (
-        " "
-      ) : (
-        <button onClick={previousSongs}>Previous page</button>
-      )}
-      {song.next === null ? (
-        <p>No more songs</p>
-      ) : (
-        searchInput.length >= 1 && <button onClick={loadMore}>Load more</button>
-      )}
     </div>
   );
 }

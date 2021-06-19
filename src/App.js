@@ -10,7 +10,6 @@ import HomePage from "./pages/HomePage";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import SpotifyRedirect from "./pages/SpotifyRedirect";
-import Player from "./components/Player";
 import { setSpotifyToken } from "./store/spotifyToken/actions";
 
 function App() {
