@@ -14,14 +14,11 @@ export default function NavBar() {
       style={{
         display: "flex",
         justifyContent: "space-around",
+        marginTop: "2px",
+        marginBottom: "5px",
       }}
     >
-      <NavLink
-        to="/"
-        activeStyle={{ color: "lightgreen" }}
-        style={{ marginTop: "20px" }}
-        exact
-      >
+      <NavLink to="/" activeStyle={{ color: "lightgreen" }} exact>
         PlayList()
       </NavLink>
       {userToken && (
