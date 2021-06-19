@@ -4,6 +4,7 @@ import user from "./user/reducer";
 import spotifyToken from "./spotifyToken/reducer";
 import newPlaylist from "./createPlaylist/reducer";
 import playlists from "./getPlaylists/reducer";
+import song from "./playSong/reducer";
 
 export default combineReducers({
   appState,
@@ -11,4 +12,5 @@ export default combineReducers({
   spotifyToken,
   newPlaylist,
   playlists,
+  song,
 });

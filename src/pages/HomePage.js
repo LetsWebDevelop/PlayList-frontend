@@ -7,6 +7,7 @@ import { selectSPOTIFYToken } from "../store/spotifyToken/selectors";
 
 import SpotifyMusic from "../spotify/SpotifyMusic";
 import MyPlayLists from "../components/MyPlayLists";
+import Player from "../components/Player";
 
 export default function HomePage() {
   const spotifyToken = useSelector(selectSPOTIFYToken);
@@ -39,6 +40,7 @@ export default function HomePage() {
         {userToken && <MyPlayLists />}
         {spotifyToken && userToken && <SpotifyMusic />}
       </div>
+      {spotifyToken && userToken && <Player />}
     </div>
   );
 }
