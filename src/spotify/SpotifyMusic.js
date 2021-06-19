@@ -1,16 +1,20 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
 
-import SpotifyPlayer from "react-spotify-web-playback";
+import { setSpotifySong } from "../store/playSong/actions";
 
 export default function SearchSpotifyMusic() {
   const [searchInput, setSearchInput] = useState("");
   const [song, setSong] = useState("");
-  const [play, setPlay] = useState(false);
+  const [nextResults, setNextResults] = useState("");
+  const [previousResults, setPreviousResults] = useState("");
+  const [APInext, setAPInext] = useState("");
+  const [APIprevious, setAPIprevious] = useState("");
   const [track, setTrack] = useState("");
-  //   const initialOffset = 0;
-  const [offset, setOffset] = useState(0);
+
   const spotifyToken = localStorage.getItem("spotifyToken");
+  const dispatch = useDispatch();
 
   async function fetchSpotifySongs() {
     const response = await axios.get(
@@ -21,47 +25,69 @@ export default function SearchSpotifyMusic() {
         },
       }
     );
+    console.log(response.data.tracks);
 
     setSong(response.data.tracks);
   }
+
+  async function fetchMoreSongs() {
+    const response = await axios.get(`${APInext}`, {
+      headers: {
+        Authorization: `Bearer ${spotifyToken}`,
+      },
+    });
+    setSong(response.data.tracks);
+  }
+
+  async function fetchPreviousSongs() {
+    const response = await axios.get(`${APIprevious}`, {
+      headers: {
+        Authorization: `Bearer ${spotifyToken}`,
+      },
+    });
+    setSong(response.data.tracks);
+  }
+
   const handleOnChange = (event) => {
     event.preventDefault();
     setSearchInput(event.target.value);
+    setNextResults(song?.next);
+    setAPInext(nextResults);
+    setPreviousResults(song?.previous);
+    setAPIprevious(previousResults);
+    console.log("next API:", APInext);
+    console.log("previous API:", APIprevious);
     fetchSpotifySongs();
   };
 
-  async function fetchMoreSongs() {
-    const limit = 50;
-
-    const response = await axios.get(
-      `https://api.spotify.com/v1/search?q=${searchInput}&type=track%2Cartist&offset=${offset}&limit=${limit}`,
-      {
-        headers: {
-          Authorization: `Bearer ${spotifyToken}`,
-        },
-      }
-    );
-
-    setSong(response.data.tracks);
-  }
-
   const loadMore = (event) => {
     event.preventDefault();
-    setOffset(offset + 50);
+    console.log(song);
+    setNextResults(song?.next);
+    setAPInext(nextResults);
+    setPreviousResults(song?.previous);
+    setAPIprevious(previousResults);
+    console.log("next API:", APInext);
+    console.log("previous API:", APIprevious);
     fetchMoreSongs();
   };
 
   const previousSongs = (event) => {
     event.preventDefault();
-    setOffset(offset - 50);
-    fetchMoreSongs();
-  };
-  const resetOffset = () => {
-    setOffset(offset - offset);
-    fetchMoreSongs();
+    console.log(song);
+    setNextResults(song?.next);
+    setAPInext(nextResults);
+    setPreviousResults(song?.previous);
+    setAPIprevious(previousResults);
+    console.log("next API:", APInext);
+    console.log("previous API:", APIprevious);
+
+    fetchPreviousSongs();
   };
 
-  useEffect(() => setPlay(true), [track]);
+  useEffect(() => {
+    dispatch(setSpotifySong(track));
+  }, [dispatch, track]);
 
   return (
     <div style={{ fontSize: "10px", marginRight: "20px" }}>
@@ -85,7 +111,7 @@ export default function SearchSpotifyMusic() {
               marginBottom: "5px",
               padding: "5px",
             }}
-            onClick={(event) => setTrack(tracks.uri)}
+            onClick={() => setTrack(tracks.uri)}
           >
             {tracks.artists?.map((artists) => {
               return (
@@ -124,32 +150,16 @@ export default function SearchSpotifyMusic() {
           </div>
         );
       })}
-      {offset > 0 && <button onClick={resetOffset}>Back to start</button>}
-      {offset > 0 && <button onClick={previousSongs}>Previous page</button>}
+
+      {APIprevious === "" ? (
+        " "
+      ) : (
+        <button onClick={previousSongs}>Previous page</button>
+      )}
       {song.next === null ? (
         <p>No more songs</p>
       ) : (
         searchInput.length >= 1 && <button onClick={loadMore}>Load more</button>
-      )}
-      {spotifyToken && (
-        <div
-          style={{
-            marginTop: "10px",
-            marginRight: "20px",
-            marginBottom: "10px",
-            maxWidth: "500px",
-            minWidth: "500px",
-          }}
-        >
-          <SpotifyPlayer
-            token={spotifyToken}
-            callback={(state) => {
-              if (!state.isPlaying) setPlay(false);
-            }}
-            play={play}
-            uris={track ? [track] : []}
-          />
-        </div>
       )}
     </div>
   );
