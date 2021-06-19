@@ -8,7 +8,7 @@ export default function SearchMusic() {
   const [search, setSearch] = useState("");
   const dispatch = useDispatch();
 
-  const handleOnChange = (event) => {
+  const submitHandle = (event) => {
     event.preventDefault();
     setSearch(event.target.value);
 
@@ -18,12 +18,14 @@ export default function SearchMusic() {
 
   return (
     <div style={{ marginLeft: "5px" }}>
-      <input
-        type="text"
-        placeholder="Spotify Search"
-        value={search}
-        onChange={handleOnChange}
-      ></input>
+      <form onSubmit={submitHandle}>
+        <input
+          type="text"
+          placeholder="Spotify Search"
+          value={search}
+          onChange={submitHandle}
+        ></input>
+      </form>
     </div>
   );
 }

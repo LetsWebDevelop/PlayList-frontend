@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux";
-import { Link, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 import { selectUserToken } from "../store/user/selectors";
 

@@ -15,6 +15,12 @@ export default function MyPlayLists() {
   const playlists = useSelector(selectPlaylists);
   const history = useHistory();
 
+  const submitPlaylistHandler = (event) => {
+    event.preventDefault();
+    dispatch(createNewPlaylist(name));
+    setName("");
+  };
+
   useEffect(() => {
     if (!userToken) {
       history.push("/login");
@@ -22,12 +28,6 @@ export default function MyPlayLists() {
 
     dispatch(fetchPlaylists());
   }, [dispatch, userToken, history]);
-
-  const submitPlaylistHandler = (event) => {
-    event.preventDefault();
-    dispatch(createNewPlaylist(name));
-    setName("");
-  };
 
   return (
     <div
@@ -51,6 +51,7 @@ export default function MyPlayLists() {
         <div
           style={{
             textAlign: "left",
+            minHeight: "68vh",
             maxHeight: "68vh",
             overflow: "auto",
             direction: "rtl",

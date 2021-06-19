@@ -11,7 +11,6 @@ export default function SpotifyMusic() {
   const song = useSelector(selectSpotifyMusic);
 
   const [track, setTrack] = useState("");
-
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -22,10 +21,10 @@ export default function SpotifyMusic() {
     <div
       style={{
         textAlign: "left",
-        fontSize: "10px",
+        fontSize: "50%",
         marginRight: "20px",
         marginLeft: "20px",
-        maxHeight: "80vh",
+        maxHeight: "70vh",
         overflowY: "auto",
       }}
     >
@@ -38,47 +37,50 @@ export default function SpotifyMusic() {
               display: "flex",
               flexWrap: "wrap",
               borderBottom: "1px solid grey",
-              height: "15px",
+              height: "70px",
               maxWidth: "80vw",
               minWidth: "80vw",
               cursor: "pointer",
-              padding: "5px",
+              overflowY: "auto",
             }}
             onClick={() => setTrack(tracks.uri)}
           >
-            {tracks.artists?.map((artists) => {
-              return (
-                <div
-                  key={artists.id}
-                  style={{ marginLeft: "3px", color: "grey" }}
-                >
-                  {" "}
-                  {artists.name.includes(search) ? (
-                    <p
-                      style={{
-                        color: "black",
-                      }}
-                    >
-                      {artists.name} -
-                    </p>
-                  ) : (
-                    <p>{artists.name} - </p>
-                  )}
-                </div>
-              );
-            })}
-            <div style={{ marginLeft: "3px", color: "grey" }}>
+            <img src={tracks.album.images[2].url} alt={tracks.name} />
+
+            <div style={{ marginLeft: "3px", color: "grey", flexWrap: "wrap" }}>
               {tracks.name.includes(search) ? (
                 <p
                   style={{
                     color: "black",
+                    fontSize: "120%",
+                    fontWeight: "bold",
                   }}
                 >
                   {tracks.name}
                 </p>
               ) : (
-                <p>{tracks.name}</p>
+                <p style={{ fontSize: "120%", fontWeight: "bold" }}>
+                  {tracks.name}
+                </p>
               )}
+
+              {tracks.artists?.map((artists) => {
+                return (
+                  <div key={artists.id} style={{ color: "grey" }}>
+                    {artists.name.includes(search) ? (
+                      <p
+                        style={{
+                          color: "black",
+                        }}
+                      >
+                        {artists.name}
+                      </p>
+                    ) : (
+                      <p>{artists.name}</p>
+                    )}
+                  </div>
+                );
+              })}
             </div>
           </div>
         );
