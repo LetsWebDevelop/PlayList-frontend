@@ -14,6 +14,7 @@ export default function NavBar() {
       style={{
         display: "flex",
         justifyContent: "space-around",
+        flexWrap: "wrap",
         marginTop: "2px",
         marginBottom: "5px",
       }}

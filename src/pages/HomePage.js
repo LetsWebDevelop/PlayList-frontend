@@ -21,14 +21,14 @@ export default function HomePage() {
 
   return (
     <div>
-      <div>{spotifyToken && userToken && <SearchMusic />}</div>
+      {spotifyToken && userToken && <Player />}
+
+      <div>{userToken && <SearchMusic />}</div>
       <div style={{ display: "flex", alignSelf: "flex-start" }}>
         {userToken && <MyPlayLists />}
 
         {spotifyToken && userToken && <SpotifyMusic />}
       </div>
-
-      {spotifyToken && userToken && <Player />}
     </div>
   );
 }

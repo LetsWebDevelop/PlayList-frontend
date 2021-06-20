@@ -22,9 +22,10 @@ export default function SpotifyMusic() {
       style={{
         textAlign: "left",
         fontSize: "50%",
+        marginTop: "20px",
         marginRight: "20px",
         marginLeft: "20px",
-        maxHeight: "70vh",
+        maxHeight: "75vh",
         overflowY: "auto",
       }}
     >
@@ -33,15 +34,18 @@ export default function SpotifyMusic() {
           <div
             key={tracks.id}
             style={{
+              marginTop: "1px",
+              marginBottom: "1px",
               textAlign: "left",
               display: "flex",
               flexWrap: "wrap",
               borderBottom: "1px solid grey",
               height: "70px",
-              maxWidth: "80vw",
-              minWidth: "80vw",
+              maxWidth: "77vw",
+              minWidth: "77vw",
               cursor: "pointer",
               overflowY: "auto",
+              overflowX: "hidden",
             }}
             onClick={() => setTrack(tracks.uri)}
           >
