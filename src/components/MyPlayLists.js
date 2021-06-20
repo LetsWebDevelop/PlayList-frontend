@@ -38,16 +38,15 @@ export default function MyPlayLists() {
       }}
     >
       <p>My PlayLists</p>
-      <input
-        type="text"
-        value={name}
-        onChange={(event) => setName(event.target.value)}
-        placeholder="New PlayList"
-      ></input>
+      <form onSubmit={submitPlaylistHandler}>
+        <input
+          type="text"
+          value={name}
+          onChange={(event) => setName(event.target.value)}
+          placeholder="New PlayList"
+        ></input>
+      </form>
       <div>
-        <button type="submit" onClick={submitPlaylistHandler}>
-          Add Playlist
-        </button>
         <div
           style={{
             textAlign: "left",

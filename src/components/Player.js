@@ -20,7 +20,7 @@ export default function Player() {
   useEffect(() => setPlay(true), [spotifyTrack]);
 
   return (
-    <div>
+    <div style={{ maxWidth: "100vw", padding: "5px" }}>
       <SpotifyPlayer
         token={spotifyToken}
         callback={songPlaying}

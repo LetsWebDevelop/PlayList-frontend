@@ -1,7 +1,9 @@
 import axios from "axios";
+
 import { appLoading, appDoneLoading } from "../appState/actions";
 
 import { selectSearchInput } from "../searchInput/selectors";
+import { spotifyLogOut } from "../spotifyToken/actions";
 
 export const FETCH_SPOTIFY_MUSIC = "FETCH_SPOTIFY_MUSIC";
 
@@ -11,7 +13,6 @@ export const fetchSpotifyMusicSucces = (spotifyMusic) => {
     payload: spotifyMusic,
   };
 };
-
 export const fetchSpotifyMusic = () => {
   return async (dispatch, getState) => {
     dispatch(appLoading());
@@ -29,8 +30,14 @@ export const fetchSpotifyMusic = () => {
       );
       console.log("initial response:", response.data.tracks);
       dispatch(fetchSpotifyMusicSucces(response.data.tracks));
+      dispatch(appDoneLoading());
     } catch (error) {
-      console.log("Error:", error);
+      console.log(error);
+      if (error.response.status === 401) {
+        localStorage.setItem("noSpotifyToken", true);
+        dispatch(spotifyLogOut());
+      }
     }
+    dispatch(appDoneLoading());
   };
 };

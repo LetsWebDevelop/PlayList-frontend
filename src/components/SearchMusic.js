@@ -17,12 +17,12 @@ export default function SearchMusic() {
   };
 
   return (
-    <div style={{ marginLeft: "5px" }}>
+    <div style={{ marginLeft: "5px", marginTop: "5px", marginBottom: "5px" }}>
       <form onSubmit={submitHandle}>
         <input
           type="text"
           placeholder="Spotify Search"
-          value={search}
+          defaultValue={search}
           onChange={submitHandle}
         ></input>
       </form>

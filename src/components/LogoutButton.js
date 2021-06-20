@@ -1,6 +1,7 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 
+import { spotifyLogOut } from "../store/spotifyToken/actions";
 import { logOut } from "../store/user/actions";
 
 export default function Logout() {
@@ -9,6 +10,7 @@ export default function Logout() {
   const handleLogout = (event) => {
     event.preventDefault();
     dispatch(logOut());
+    dispatch(spotifyLogOut());
   };
 
   return (

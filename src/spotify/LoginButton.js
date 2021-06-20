@@ -1,13 +1,12 @@
 import React from "react";
+import { useSelector } from "react-redux";
+
+import { Timer } from "../components/timer";
 
 import { client_id } from "../secrets/spotify";
-
-import { useSelector } from "react-redux";
 import { selectSPOTIFYToken } from "../store/spotifyToken/selectors";
 
 export default function SpotifyLoginButton() {
-  const spotifyToken = useSelector(selectSPOTIFYToken);
-
   const CLIENT_ID = client_id;
   const SPOTIFY_AUTHORIZE_ENDPOINT = "https://accounts.spotify.com/authorize";
   const REDIRECT_URL = "http://localhost:3000/spotifyredirect";
@@ -25,22 +24,15 @@ export default function SpotifyLoginButton() {
 
   const handleLogin = () => {
     window.location = `${SPOTIFY_AUTHORIZE_ENDPOINT}?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URL}&scope=${SCOPES_URL_PARAM}&response_type=token&show_dialog=true`;
+    localStorage.setItem("noSpotifyToken", false);
   };
+
+  const spotifyToken = localStorage.getItem("spotifyToken");
+  const spotify_token = useSelector(selectSPOTIFYToken);
 
   return (
     <div>
-      {spotifyToken ? (
-        <button
-          onClick={handleLogin}
-          style={{
-            backgroundColor: "lightgreen",
-            color: "white",
-            cursor: "pointer",
-          }}
-        >
-          Connected to Spotify
-        </button>
-      ) : (
+      {!spotifyToken && spotify_token === null ? (
         <button
           onClick={handleLogin}
           style={{
@@ -50,6 +42,18 @@ export default function SpotifyLoginButton() {
           }}
         >
           Login to Spotify
+        </button>
+      ) : (
+        <button
+          onClick={handleLogin}
+          style={{
+            backgroundColor: "lightgreen",
+            color: "white",
+            cursor: "pointer",
+          }}
+        >
+          Connected to Spotify
+          <Timer />
         </button>
       )}
     </div>
