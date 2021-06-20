@@ -4,9 +4,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 
 import { createNewPlaylist } from "../store/createPlaylist/actions";
-import { fetchPlaylists } from "../store/getPlaylists/actions";
+
 import { selectUserToken } from "../store/user/selectors";
 import { selectPlaylists } from "../store/getPlaylists/selectors";
+import { fetchPlaylists } from "../store/getPlaylists/actions";
 
 export default function MyPlayLists() {
   const dispatch = useDispatch();
@@ -19,13 +20,13 @@ export default function MyPlayLists() {
     event.preventDefault();
     dispatch(createNewPlaylist(name));
     setName("");
+    history.push("/loading");
   };
 
   useEffect(() => {
     if (!userToken) {
       history.push("/login");
     }
-
     dispatch(fetchPlaylists());
   }, [dispatch, userToken, history]);
 
