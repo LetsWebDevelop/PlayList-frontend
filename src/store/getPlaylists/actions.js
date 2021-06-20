@@ -15,10 +15,12 @@ export const fetchPlaylistSucces = (playlists) => {
 export const fetchPlaylists = () => {
   return async (dispatch, getState) => {
     dispatch(appLoading());
+    const id = localStorage.getItem("userId");
+
     try {
       const userToken = selectUserToken(getState());
 
-      const response = await axios.get(`${apiUrl}/playlist`, {
+      const response = await axios.get(`${apiUrl}/playlist/${id}`, {
         headers: {
           Authorization: `Bearer ${userToken}`,
         },

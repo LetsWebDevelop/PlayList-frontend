@@ -37,6 +37,7 @@ export const signUp = (username, email, password) => {
       });
 
       dispatch(loginSuccess(response.data));
+      localStorage.setItem("userId", response.data.id);
       dispatch(showMessageWithTimeout("success", true, "account created"));
       dispatch(appDoneLoading());
     } catch (error) {
@@ -62,6 +63,7 @@ export const login = (email, password) => {
       });
 
       dispatch(loginSuccess(response.data));
+      localStorage.setItem("userId", response.data.id);
       dispatch(showMessageWithTimeout("success", false, "welcome back!", 1500));
       dispatch(appDoneLoading());
     } catch (error) {
@@ -95,6 +97,7 @@ export const getUserWithStoredToken = () => {
 
       // token is still valid
       dispatch(tokenStillValid(response.data));
+      localStorage.setItem("userId", response.data.id);
       dispatch(appDoneLoading());
     } catch (error) {
       if (error.response) {
