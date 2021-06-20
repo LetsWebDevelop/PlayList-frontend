@@ -5,6 +5,7 @@ import { Switch, Route } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { getUserWithStoredToken } from "./store/user/actions";
 
+import Loading from "./components/Loading";
 import NavBar from "./components/NavBar";
 import HomePage from "./pages/HomePage";
 import Login from "./pages/Login";
@@ -21,7 +22,7 @@ function App() {
     if (!spotifyToken) {
       dispatch(spotifyLogOut());
     } else {
-      return dispatch(setSpotifyToken(spotifyToken));
+      dispatch(setSpotifyToken(spotifyToken));
     }
   }, [dispatch]);
 
@@ -29,6 +30,7 @@ function App() {
     <div style={{ maxHeight: "99vh", minHeight: "99vh", overflow: "hidden" }}>
       <NavBar />
       <Switch>
+        <Route path="/loading" component={Loading} />
         <Route path="/signup" component={Signup} />
         <Route path="/login" component={Login} />
         <Route path="/spotifyredirect" component={SpotifyRedirect} />
