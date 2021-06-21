@@ -6,6 +6,7 @@ import playlists from "./Playlists/reducer";
 import song from "./playSong/reducer";
 import search from "./searchInput/reducer";
 import spotifyMusic from "./spotifyMusic/reducer";
+import playlistByID from "./PlaylistByID/reducer";
 
 export default combineReducers({
   appState,
@@ -15,4 +16,5 @@ export default combineReducers({
   song,
   search,
   spotifyMusic,
+  playlistByID,
 });

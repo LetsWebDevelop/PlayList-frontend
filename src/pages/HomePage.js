@@ -9,6 +9,7 @@ import SpotifyMusic from "../spotify/SpotifyMusic";
 import MyPlayLists from "../components/MyPlayLists";
 import Player from "../components/Player";
 import SearchMusic from "../components/SearchMusic";
+import PlayListComponent from "../components/PlayListComponent";
 
 export default function HomePage() {
   const spotifyToken = useSelector(selectSPOTIFYToken);
@@ -26,6 +27,7 @@ export default function HomePage() {
       <div>{userToken && <SearchMusic />}</div>
       <div style={{ display: "flex", alignSelf: "flex-start" }}>
         {userToken && <MyPlayLists />}
+        {userToken && <PlayListComponent />}
 
         {spotifyToken && userToken && <SpotifyMusic />}
       </div>
