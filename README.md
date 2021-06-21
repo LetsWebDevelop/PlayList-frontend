@@ -1,70 +1,32 @@
-# Getting Started with Create React App
+# 👋 Welcome to **PlayList**!
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## About
 
-## Available Scripts
+PlayList is still in **development** and new features will be added. This app will allow users to create PlayLists with music from different providers (Spotify, SoundCloud, Apple music, YouTube music, Deezer etc). The music in their PlayList can then be listened to within the app itself, this way users won't have to switch between music apps anymore and they'll have their favorite music in one place.
 
-In the project directory, you can run:
+## Page overview
 
-### `npm start`
+Homepage - This is basically where all the magic happens. You can see your PlayLists, create PlayLists and search for music. Connect to music providers and logout.
+Login - Users can only get to the homepage when they are logged in.
+Signup - This is where you create a profile.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## User Stories
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+- As a user I would like to sign up and log in.
+- As a user I would like to link my account to various music providers.
+- As a user I would like to search for music from various music providers.
+- As a user I would like to create a playlist with music from various music providers.
+- As a user I would like to be able to play music inside the PlayList app, so I won't have to switch between music apps anymore.
+- As a user I would like to see some music on the homepage by default.
 
-### `npm test`
+### Wireframes
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+[Click here to see the wireframes](https://wireframepro.mockflow.com/view/M970cd7a12ddc65e734fa69064c16254d1623404626565#/page/efd1a07baa5e437c9255a5d541a9fc54)
 
-### `npm run build`
+### Database diagram
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+[Click here to see the database diagram](https://docs.google.com/drawings/d/1gL0Bckjxjw4UPQzM59-r-Fm2bK5dlTdh8RCyX4eqGBI/edit)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Backend repo
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+[Click here to see the backend repository](https://github.com/Flipmemax/PlayList-backend)
