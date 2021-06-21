@@ -3,11 +3,9 @@ import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 
-import { createNewPlaylist } from "../store/createPlaylist/actions";
-
 import { selectUserToken } from "../store/user/selectors";
-import { selectPlaylists } from "../store/getPlaylists/selectors";
-import { fetchPlaylists } from "../store/getPlaylists/actions";
+import { selectPlaylists } from "../store/Playlists/selectors";
+import { fetchPlaylists, createNewPlaylist } from "../store/Playlists/actions";
 
 export default function MyPlayLists() {
   const dispatch = useDispatch();
@@ -22,7 +20,6 @@ export default function MyPlayLists() {
     dispatch(createNewPlaylist(name));
     setName("");
     setAddList(false);
-    history.push("/loading");
   };
 
   useEffect(() => {
@@ -78,7 +75,7 @@ export default function MyPlayLists() {
         {playlists.map((playlist) => {
           return (
             <div key={playlist.id} style={{ borderBottom: "1px solid grey" }}>
-              <p style={{ fontSize: "10px" }}>{playlist.name}</p>
+              <p style={{ fontSize: "10px" }}>{`${playlist.name}`}</p>
             </div>
           );
         })}
