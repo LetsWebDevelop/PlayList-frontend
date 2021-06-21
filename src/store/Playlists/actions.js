@@ -28,7 +28,7 @@ export const fetchPlaylists = () => {
     try {
       const userToken = selectUserToken(getState());
 
-      const response = await axios.get(`${apiUrl}/playlist/${id}`, {
+      const response = await axios.get(`${apiUrl}/playlist/mylists/${id}`, {
         headers: {
           Authorization: `Bearer ${userToken}`,
         },
