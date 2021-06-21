@@ -18,8 +18,10 @@ function App() {
   useEffect(() => {
     dispatch(getUserWithStoredToken());
     const spotifyToken = localStorage.getItem("spotifyToken");
+
     if (!spotifyToken) {
       dispatch(spotifyLogOut());
+      localStorage.setItem("noSpotifyToken", true);
     } else {
       dispatch(setSpotifyToken(spotifyToken));
     }
