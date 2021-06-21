@@ -4,6 +4,7 @@ import { appLoading, appDoneLoading } from "../appState/actions";
 import { selectUserToken } from "../user/selectors";
 
 export const FETCH_PLAYLISTBYID_SUCCES = "FETCH_PLAYLISTBYID_SUCCES";
+export const CLEAR_PLAYLISTBYID = "CLEAR_PLAYLSITBYID"
 
 export const fetchPlaylistByIdSucces = (playlistByID) => {
   return {
@@ -11,6 +12,13 @@ export const fetchPlaylistByIdSucces = (playlistByID) => {
     payload: playlistByID,
   };
 };
+
+export const clearPlaylistByID = (playlistByID) => {
+  return {
+    type: CLEAR_PLAYLISTBYID,
+    payload: playlistByID
+  }
+}
 
 export const fetchPlaylistByID = (playlistID) => {
   return async (dispatch, getState) => {
