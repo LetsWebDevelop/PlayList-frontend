@@ -19,7 +19,7 @@ export default function SpotifyRedirect() {
       localStorage.setItem("spotifyToken", spotifyToken);
       dispatch(setSpotifyToken(spotifyToken));
     }
-  }, [dispatch, spotifyToken]);
+  }, [dispatch, spotifyToken, history]);
 
   const getToken = (hash) => {
     const afterHashTag = hash.substring(1);
@@ -33,9 +33,12 @@ export default function SpotifyRedirect() {
     return paramsSplit;
   };
 
-  if (spotifyToken) {
-    history.push("/");
-  }
+  useEffect(() => {
+    if (spotifyToken) {
+      localStorage.setItem("noSpotifyToken", false);
+      history.push("/");
+    }
+  });
 
   return (
     <div>

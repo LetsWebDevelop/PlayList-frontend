@@ -11,6 +11,7 @@ export default function Logout() {
     event.preventDefault();
     dispatch(logOut());
     dispatch(spotifyLogOut());
+    localStorage.setItem("noSpotifyToken", true);
   };
 
   return (
