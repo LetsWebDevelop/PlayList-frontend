@@ -24,7 +24,6 @@ export default function SpotifyLoginButton() {
 
   const handleLogin = () => {
     window.location = `${SPOTIFY_AUTHORIZE_ENDPOINT}?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URL}&scope=${SCOPES_URL_PARAM}&response_type=token&show_dialog=true`;
-    localStorage.setItem("noSpotifyToken", false);
   };
 
   const spotifyToken = localStorage.getItem("spotifyToken");

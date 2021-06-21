@@ -12,6 +12,7 @@ import { fetchPlaylists } from "../store/getPlaylists/actions";
 export default function MyPlayLists() {
   const dispatch = useDispatch();
   const [name, setName] = useState("");
+  const [addList, setAddList] = useState(false);
   const userToken = useSelector(selectUserToken);
   const playlists = useSelector(selectPlaylists);
   const history = useHistory();
@@ -20,6 +21,7 @@ export default function MyPlayLists() {
     event.preventDefault();
     dispatch(createNewPlaylist(name));
     setName("");
+    setAddList(false);
     history.push("/loading");
   };
 
@@ -38,35 +40,48 @@ export default function MyPlayLists() {
         maxWidth: "184px",
       }}
     >
-      <p>My PlayLists</p>
-      <form onSubmit={submitPlaylistHandler}>
-        <input
-          type="text"
-          value={name}
-          onChange={(event) => setName(event.target.value)}
-          placeholder="New PlayList"
-        ></input>
-      </form>
-      <div>
-        <div
+      <p style={{ borderBottom: "1px solid grey" }}>
+        My PlayLists{" "}
+        <button
           style={{
-            textAlign: "left",
-            minHeight: "68vh",
-            maxHeight: "68vh",
-            overflow: "auto",
-            direction: "rtl",
-            paddingLeft: "4px",
-            paddingRight: "4px",
+            border: "none",
+            backgroundColor: "transparent",
+            cursor: "pointer",
           }}
+          onClick={() => setAddList(true)}
         >
-          {playlists.map((playlist) => {
-            return (
-              <div key={playlist.id}>
-                <p style={{ fontSize: "10px" }}>{playlist.name}</p>
-              </div>
-            );
-          })}
-        </div>
+          +
+        </button>
+      </p>
+      {addList && (
+        <form onSubmit={submitPlaylistHandler}>
+          <input
+            type="text"
+            value={name}
+            onChange={(event) => setName(event.target.value)}
+            placeholder="New PlayList"
+          ></input>
+        </form>
+      )}
+
+      <div
+        style={{
+          textAlign: "left",
+          minHeight: "68vh",
+          maxHeight: "68vh",
+          overflow: "auto",
+          direction: "rtl",
+          paddingLeft: "4px",
+          paddingRight: "4px",
+        }}
+      >
+        {playlists.map((playlist) => {
+          return (
+            <div key={playlist.id} style={{ borderBottom: "1px solid grey" }}>
+              <p style={{ fontSize: "10px" }}>{playlist.name}</p>
+            </div>
+          );
+        })}
       </div>
     </div>
   );
