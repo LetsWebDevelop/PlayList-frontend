@@ -25,7 +25,7 @@ export default function Player() {
         token={spotifyToken}
         callback={songPlaying}
         play={play}
-        uris={spotifyTrack ? [spotifyTrack] : []}
+        uris={spotifyTrack ? [spotifyTrack] : [] }
       />
     </div>
   );

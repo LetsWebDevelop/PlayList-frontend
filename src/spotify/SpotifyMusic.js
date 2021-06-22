@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
+import AddSongButton from "../components/AddSongButton";
 import MusicComponent from "../components/MusicComponent";
 import "../components/MusicComponent.css";
 
@@ -21,9 +22,7 @@ export default function SpotifyMusic() {
     <div className="mainBox">
       {song.items?.map((tracks) => {
         return (
-          <div
-            key={tracks.id}
-          >
+          <div key={tracks.id}>
             <div className="musicBox">
               <div onClick={() => setTrack(tracks.uri)} className="playSong">
                 <MusicComponent img={tracks.album.images[2].url} />
@@ -33,36 +32,16 @@ export default function SpotifyMusic() {
                   <MusicComponent title={tracks.name} />
                 </div>
                 {tracks.artists.map((artists) => {
-                  return (
-                    <div className="defaultArtistText" key={artists.id}>
-                      <MusicComponent artist={artists.name} />
-                    </div>
-
+                  return (   
+                  <div className="defaultArtistText" key={artists.id}>
+                    <MusicComponent artist={artists.name} />
+                  </div>             
                   );
                 })}
-
-                <div style={{
-                  maxWidth: "48px",
-                  display: "flex",
-                  alignItems: "flex-end",
-                  justifyContent: "flex-start",
-                  flexDirection: "row"
-                }}>
-                  <button style={{
-                    marginBottom: "5px",
-                    border: "none",
-                    fontSize: "8px",
-                    color: "white",
-                    backgroundColor: "purple",
-                    cursor: "pointer"
-                  }}>
-                    Add Song
-                  </button>
-                          </div>
+                <AddSongButton tracks={tracks} /> 
               </div>
             </div>
           </div>
-
         );
       })}
     </div>
