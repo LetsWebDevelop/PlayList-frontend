@@ -41,3 +41,16 @@
   cursor: pointer;
   font-style: italic;
 }
+
+.green {
+    color: green;
+}
+
+.grey {
+    color: grey;
+}
+
+.title {
+    color: black;
+    font-weight: bold;
+}
