@@ -19,9 +19,12 @@
   max-height: 60px;
   max-width: 77vw;
   min-width: 77vw;
-  cursor: pointer;
   overflow-y: auto;
   overflow-x: hidden;
+}
+
+.playSong {
+  cursor: pointer;
 }
 
 .songTitleArtistBox {

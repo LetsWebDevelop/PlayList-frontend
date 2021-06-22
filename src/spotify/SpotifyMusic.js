@@ -22,24 +22,47 @@ export default function SpotifyMusic() {
       {song.items?.map((tracks) => {
         return (
           <div
-            className="musicBox"
             key={tracks.id}
-            onClick={() => setTrack(tracks.uri)}
           >
-            <MusicComponent img={tracks.album.images[2].url} />
-            <div className="songTitleArtistBox">
-              <div className="defaultTitleText">
-                <MusicComponent title={tracks.name} />
+            <div className="musicBox">
+              <div onClick={() => setTrack(tracks.uri)} className="playSong">
+                <MusicComponent img={tracks.album.images[2].url} />
               </div>
-              {tracks.artists.map((artists) => {
-                return (
-                  <div className="defaultArtistText" key={artists.id}>
-                    <MusicComponent artist={artists.name} />
-                  </div>
-                );
-              })}
+              <div className="songTitleArtistBox">
+                <div className="defaultTitleText">
+                  <MusicComponent title={tracks.name} />
+                </div>
+                {tracks.artists.map((artists) => {
+                  return (
+                    <div className="defaultArtistText" key={artists.id}>
+                      <MusicComponent artist={artists.name} />
+                    </div>
+
+                  );
+                })}
+
+                <div style={{
+                  maxWidth: "48px",
+                  display: "flex",
+                  alignItems: "flex-end",
+                  justifyContent: "flex-start",
+                  flexDirection: "row"
+                }}>
+                  <button style={{
+                    marginBottom: "5px",
+                    border: "none",
+                    fontSize: "8px",
+                    color: "white",
+                    backgroundColor: "purple",
+                    cursor: "pointer"
+                  }}>
+                    Add Song
+                  </button>
+                          </div>
+              </div>
             </div>
           </div>
+
         );
       })}
     </div>
