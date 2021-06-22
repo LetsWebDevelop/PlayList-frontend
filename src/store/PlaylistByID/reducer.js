@@ -7,8 +7,8 @@ export default function fetchPlaylistByIDReducer(state = initialState, action) {
     case FETCH_PLAYLISTBYID_SUCCES:
       return { ...action.payload };
 
-case CLEAR_PLAYLISTBYID:
-        return {}
+    case CLEAR_PLAYLISTBYID:
+      return {}
 
     default:
       return state;

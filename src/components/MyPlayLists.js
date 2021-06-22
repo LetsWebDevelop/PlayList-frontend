@@ -66,8 +66,8 @@ export default function MyPlayLists() {
       <div
         style={{
           textAlign: "left",
-          minHeight: "68vh",
-          maxHeight: "68vh",
+          minHeight: "60vh",
+          maxHeight: "60vh",
           overflow: "auto",
           direction: "rtl",
           paddingLeft: "4px",

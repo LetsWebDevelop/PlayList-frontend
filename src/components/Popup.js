@@ -1,30 +1,22 @@
 import "./Popup.css"
+import { addSong } from "../store/PlaylistByID/actions";
 import { selectPlaylists } from "../store/Playlists/selectors";
-import { useSelector } from "react-redux";
-import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
 
 export default function Popup(props) {
 const playlists = useSelector(selectPlaylists)
+const dispatch = useDispatch();
 
-const artists = props.track.artists.map((artists) => {
+const artistlist = props.track.artists.map((artists) => {
   return artists.name
 })
-
+const space = ", "
+const artist = artistlist.join(space)
 const title = props.track.name;
 const image = props.track.album.images[2].url;
 const uri = props.track.uri;
 const origin = "Spotify";
-
-const selectPlaylistHandler = () => {
-  console.log("artists:", artists)
-  console.log("title:", title)
-  console.log("origin:", origin)
-  console.log("uri:", uri)
-  console.log("image:", image)
-}
-
-
 
   return ( 
       <div className="popup-box">
@@ -41,7 +33,8 @@ const selectPlaylistHandler = () => {
         {playlists.map((playlist) => {
         return (
           <div key={playlist.id} >
-         <div className="selectPlaylist" onClick={selectPlaylistHandler}>
+         <div className="selectPlaylist" onClick={() => 
+          dispatch(addSong(title, artist, image, uri, origin, playlist.id ))}>
          <p>{playlist.name} {playlist.id}</p>
          </div>
         </div>
