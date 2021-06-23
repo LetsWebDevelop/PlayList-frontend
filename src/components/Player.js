@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import SpotifyPlayer from "react-spotify-web-playback";
 
+import "./Player.css"
 import { selectSPOTIFYToken } from "../store/spotifyToken/selectors";
 import { selectSpotifySong } from "../store/playSong/selectors";
 
@@ -20,7 +21,7 @@ export default function Player() {
   useEffect(() => setPlay(true), [spotifyTrack]);
 
   return (
-    <div style={{ maxWidth: "100vw", padding: "5px" }}>
+    <div className="playerBox">
       <SpotifyPlayer
         token={spotifyToken}
         callback={songPlaying}

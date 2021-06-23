@@ -1,15 +1,15 @@
-.mainBox {
+.mainBoxPL {
   display: flex;
   flex-wrap: wrap;
   text-align: left;
   font-size: 50%;
   margin-right: 20px;
-  margin-left: 15px;
+  margin-left: -20px;
   max-height: 68vh;
   overflow-y: auto;
 }
 
-.musicBox {
+.musicBoxPL {
   display: flex;
   flex-direction: row;
   border-bottom: 1px solid grey;
@@ -20,22 +20,22 @@
   overflow-x: hidden;
 }
 
-.playSong {
+.playSongPL {
   cursor: pointer;
   padding: 5px;
   
 }
 
-.songTitleArtistBox {
+.songTitleArtistBoxPL {
   margin-left: 3px;
   padding: 2px;
 }
 
-.defaultTitleText {
+.defaultTitleTextPL {
   font-size: 150%;
 }
 
-.defaultArtistText {
+.defaultArtistTextPL {
   font-size: 120%;
   margin-top: 2px;
   margin-bottom: 2px;

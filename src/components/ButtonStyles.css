@@ -1,0 +1,36 @@
+       
+.addSongButtonBox {
+  max-width: 48px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-start;
+  flex-direction: row;
+
+}
+
+.addSongButtonStyle {
+  margin-bottom: 5px;
+  border: none;
+  font-size: 8px;
+  color: white;
+  background-color: rgb(143, 5, 143);
+  cursor: pointer;
+}
+
+.logoutButton {
+  color: white;
+  background-color: rgb(248, 8, 8);
+  cursor: pointer;
+}
+
+.spotifyButtonRed {
+  color: white;
+  background-color: rgb(248, 8, 8);
+  cursor: pointer;
+}
+
+.spotifyButtonGreen {
+  color: white;
+  background-color: lightgreen;
+  cursor: pointer;
+}

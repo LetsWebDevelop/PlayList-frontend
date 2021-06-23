@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 
+import "./SearchMusic.css"
+
 import { setSearchInput } from "../store/searchInput/actions";
 import { fetchSpotifyMusic } from "../store/spotifyMusic/actions";
 import { clearPlaylistByID } from "../store/PlaylistByID/actions";
@@ -19,13 +21,14 @@ export default function SearchMusic() {
   };
 
   return (
-    <div style={{ marginLeft: "5px", marginTop: "5px", marginBottom: "5px" }}>
+    <div className="searchMusicMain">
       <form onSubmit={submitHandle}>
         <input
           type="text"
           placeholder="Spotify Search"
           defaultValue={search}
           onChange={submitHandle}
+          className="searchBox"
         ></input>
       </form>
     </div>
