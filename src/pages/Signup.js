@@ -4,7 +4,7 @@ import { selectUserToken } from "../store/user/selectors";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, Link } from "react-router-dom";
 
-import "./Signup.css"
+import "./Signup.css";
 
 export default function SignupPage() {
   const [userName, setUserName] = useState("");
@@ -35,49 +35,42 @@ export default function SignupPage() {
     <div>
       <h1>Signup Page</h1>
 
-      <form onSubmit={submitForm} >
-      <div
-       className="mainBoxSignup"
-      >
-
-        <input
-          value={userName}
-          onChange={(event) => setUserName(event.target.value)}
-          type="text"
-          placeholder="Username"
-          required
-          className="alignSelfSignup"
+      <form onSubmit={submitForm}>
+        <div className="mainBoxSignup">
+          <input
+            value={userName}
+            onChange={(event) => setUserName(event.target.value)}
+            type="text"
+            placeholder="Username"
+            required
+            className="alignSelfSignup"
           ></input>
-        <input
-          value={email}
-          onChange={(event) => setEmail(event.target.value)}
-          type="email"
-          placeholder="email"
-          required
-          className="alignSelfSignup"
-        ></input>
-        <input
-          value={password}
-          onChange={(event) => setPassword(event.target.value)}
-          type="password"
-          placeholder="password"
-          required
-          className="alignSelfSignup"
-        ></input>
-        <button
-          type="submit"
-          onClick={submitForm}
-          className="signupButton"
-          >
-          Submit
-        </button>
-        <div
-          className="LinkSignup"
-          >
-          <Link to="/login" className="noDecorationSignup">Click here to log in</Link>
+          <input
+            value={email}
+            onChange={(event) => setEmail(event.target.value)}
+            type="email"
+            placeholder="email"
+            required
+            className="alignSelfSignup"
+          ></input>
+          <input
+            value={password}
+            onChange={(event) => setPassword(event.target.value)}
+            type="password"
+            placeholder="password"
+            required
+            className="alignSelfSignup"
+          ></input>
+          <button type="submit" onClick={submitForm} className="signupButton">
+            Submit
+          </button>
+          <div className="LinkSignup">
+            <Link to="/login" className="noDecorationSignup">
+              Click here to log in
+            </Link>
+          </div>
         </div>
-      </div>
-    </form>
+      </form>
     </div>
   );
 }

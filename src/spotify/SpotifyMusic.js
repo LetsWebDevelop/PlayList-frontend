@@ -32,13 +32,13 @@ export default function SpotifyMusic() {
                   <MusicComponent title={tracks.name} />
                 </div>
                 {tracks.artists.map((artists) => {
-                  return (   
-                  <div className="defaultArtistText" key={artists.id}>
-                    <MusicComponent artist={artists.name} />
-                  </div>             
+                  return (
+                    <div className="defaultArtistText" key={artists.id}>
+                      <MusicComponent artist={artists.name} />
+                    </div>
                   );
                 })}
-                <AddSongButton tracks={tracks} /> 
+                <AddSongButton tracks={tracks} />
               </div>
             </div>
           </div>

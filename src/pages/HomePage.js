@@ -16,7 +16,6 @@ export default function HomePage() {
   const userToken = useSelector(selectUserToken);
   const history = useHistory();
 
-
   if (!userToken) {
     history.push("/login");
   }
@@ -30,7 +29,7 @@ export default function HomePage() {
         {userToken && <MyPlayLists />}
 
         {spotifyToken && userToken && <SpotifyMusic />}
-        {userToken  && <PlayListComponent />}
+        {userToken && <PlayListComponent />}
       </div>
     </div>
   );

@@ -1,7 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
 
-import "../components/ButtonStyles.css"
+import "../components/ButtonStyles.css";
 import { Timer } from "../components/timer";
 
 import { client_id } from "../secrets/spotify";
@@ -33,17 +33,11 @@ export default function SpotifyLoginButton() {
   return (
     <div>
       {!spotifyToken && spotify_token === null ? (
-        <button
-          onClick={handleLogin}
-        className="spotifyButtonRed"
-        >
+        <button onClick={handleLogin} className="spotifyButtonRed">
           Login to Spotify
         </button>
       ) : (
-        <button
-          onClick={handleLogin}
-          className="spotifyButtonGreen"
-        >
+        <button onClick={handleLogin} className="spotifyButtonGreen">
           Connected to Spotify
           <Timer />
         </button>
