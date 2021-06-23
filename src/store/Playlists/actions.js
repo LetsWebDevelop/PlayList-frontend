@@ -60,11 +60,11 @@ export const createNewPlaylist = (name) => {
           headers: {
             Authorization: `Bearer ${userToken}`,
           },
-        }
+        },
       );
       console.log(
         "Congrats! You made a new PlayList, awesome!",
-        response.data.playlist
+        response.data.playlist,
       );
       dispatch(playListCreated(response.data.playlist));
       dispatch(appDoneLoading());

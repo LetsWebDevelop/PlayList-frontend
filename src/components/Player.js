@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import SpotifyPlayer from "react-spotify-web-playback";
 
-import "./Player.css"
+import "./Player.css";
 import { selectSPOTIFYToken } from "../store/spotifyToken/selectors";
 import { selectSpotifySong } from "../store/playSong/selectors";
 
@@ -26,7 +26,7 @@ export default function Player() {
         token={spotifyToken}
         callback={songPlaying}
         play={play}
-        uris={spotifyTrack ? [spotifyTrack] : [] }
+        uris={spotifyTrack ? [spotifyTrack] : []}
       />
     </div>
   );

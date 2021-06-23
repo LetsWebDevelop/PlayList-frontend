@@ -4,7 +4,7 @@ import { selectUserToken } from "../store/user/selectors";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, Link } from "react-router-dom";
 
-import "./Login.css"
+import "./Login.css";
 
 export default function LoginPage() {
   const [email, setEmail] = useState("");
@@ -32,36 +32,34 @@ export default function LoginPage() {
     <div>
       <h1>Login to PlayList</h1>
 
-        <form onSubmit={submitForm}>
-      <div className="mainBoxLogin" >
-        <input
-          value={email}
-          onChange={(event) => setEmail(event.target.value)}
-          type="email"
-          placeholder="Email"
-          required
-          className="alignSelf"
+      <form onSubmit={submitForm}>
+        <div className="mainBoxLogin">
+          <input
+            value={email}
+            onChange={(event) => setEmail(event.target.value)}
+            type="email"
+            placeholder="Email"
+            required
+            className="alignSelf"
           ></input>
-        <input
-          value={password}
-          onChange={(event) => setPassword(event.target.value)}
-          type="password"
-          placeholder="password"
-          required
-          className="alignSelf"
+          <input
+            value={password}
+            onChange={(event) => setPassword(event.target.value)}
+            type="password"
+            placeholder="password"
+            required
+            className="alignSelf"
           ></input>
-        <button
-          type="submit"
-          onClick={submitForm}
-          className="loginButton"
-          >
-          Login
-        </button>
-        <div className="Link">
-          <Link to="/signup" className="noDecoration">Signup here</Link>
+          <button type="submit" onClick={submitForm} className="loginButton">
+            Login
+          </button>
+          <div className="Link">
+            <Link to="/signup" className="noDecoration">
+              Signup here
+            </Link>
+          </div>
         </div>
-      </div>
-          </form>
+      </form>
     </div>
   );
 }

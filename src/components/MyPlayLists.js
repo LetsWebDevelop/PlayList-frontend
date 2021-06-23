@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 
-import "./MyPlayLists.css"
+import "./MyPlayLists.css";
 
 import { selectUserToken } from "../store/user/selectors";
 import { selectPlaylists } from "../store/Playlists/selectors";
@@ -36,10 +36,7 @@ export default function MyPlayLists() {
     <div className="mainPlayListBox">
       <p className="playListBorderBottom">
         My PlayLists{" "}
-        <button
-          className="addPlaylistButton"
-          onClick={() => setAddList(true)}
-        >
+        <button className="addPlaylistButton" onClick={() => setAddList(true)}>
           +
         </button>
       </p>
@@ -54,15 +51,16 @@ export default function MyPlayLists() {
         </form>
       )}
 
-      <div className="playlistBox" >
+      <div className="playlistBox">
         {playlists.map((playlist) => {
           return (
             <div
               className="clickBox"
               key={playlist.id}
               onClick={() => {
-                dispatch(fetchPlaylistByID(playlist.id))
-              }}>
+                dispatch(fetchPlaylistByID(playlist.id));
+              }}
+            >
               <p>{`${playlist.name}`}</p>
             </div>
           );

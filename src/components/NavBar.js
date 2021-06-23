@@ -1,6 +1,6 @@
 import { NavLink } from "react-router-dom";
 
-import "./NavBar.css"
+import "./NavBar.css";
 import SpotifyLoginButton from "../spotify/LoginButton";
 import Logout from "./LogoutButton";
 
@@ -11,9 +11,7 @@ export default function NavBar() {
   const userToken = useSelector(selectUserToken);
 
   return (
-    <div
-     className="mainNav"
-    >
+    <div className="mainNav">
       <NavLink to="/" activeStyle={{ color: "lightgreen" }} exact>
         PlayList()
       </NavLink>

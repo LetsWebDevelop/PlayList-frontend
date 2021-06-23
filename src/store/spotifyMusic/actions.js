@@ -6,7 +6,7 @@ import { selectSearchInput } from "../searchInput/selectors";
 import { spotifyLogOut } from "../spotifyToken/actions";
 
 export const FETCH_SPOTIFY_MUSIC = "FETCH_SPOTIFY_MUSIC";
-export const CLEAR_SPOTIFY_MUSIC = "CLEAR_SPOTIFY_MUSIC"
+export const CLEAR_SPOTIFY_MUSIC = "CLEAR_SPOTIFY_MUSIC";
 
 export const fetchSpotifyMusicSucces = (spotifyMusic) => {
   return {
@@ -18,9 +18,9 @@ export const fetchSpotifyMusicSucces = (spotifyMusic) => {
 export const clearSpotifyMusic = (spotifyMusic) => {
   return {
     type: CLEAR_SPOTIFY_MUSIC,
-    payload: spotifyMusic
-  }
-}
+    payload: spotifyMusic,
+  };
+};
 
 export const fetchSpotifyMusic = () => {
   return async (dispatch, getState) => {
@@ -35,11 +35,11 @@ export const fetchSpotifyMusic = () => {
           headers: {
             Authorization: `Bearer ${spotifyToken}`,
           },
-        }
+        },
       );
       console.log("initial response:", response.data.tracks);
       dispatch(fetchSpotifyMusicSucces(response.data.tracks));
-  
+
       dispatch(appDoneLoading());
     } catch (error) {
       console.log(error);
