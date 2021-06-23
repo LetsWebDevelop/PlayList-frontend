@@ -1,5 +1,5 @@
 import { useState } from "react"
-import "./AddSongButton.css"
+import "./ButtonStyles.css"
 import Popup from "./Popup"
 
 export default function AddSongButton(props) {
@@ -11,11 +11,11 @@ const togglePopup = () => {
     
 }
     return (
-        <div className="mainButtonBox">
-            <button className="buttonStyle" onClick={togglePopup}>Add Song</button>
+        <div className="addSongButtonBox">
+            <button className="addSongButtonStyle" onClick={togglePopup}>Add Song</button>
             {openPopup && <Popup 
             track={props.tracks}
-         handleClose={togglePopup}
+            handleClose={togglePopup}
         />}
         </div>
     )

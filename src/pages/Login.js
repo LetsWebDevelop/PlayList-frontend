@@ -4,6 +4,8 @@ import { selectUserToken } from "../store/user/selectors";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, Link } from "react-router-dom";
 
+import "./Login.css"
+
 export default function LoginPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -28,48 +30,38 @@ export default function LoginPage() {
   };
   return (
     <div>
-      <h1 style={{ textAlign: "center" }}>Login Page</h1>
+      <h1>Login to PlayList</h1>
 
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          flexDirection: "column",
-        }}
-      >
+        <form onSubmit={submitForm}>
+      <div className="mainBoxLogin" >
         <input
           value={email}
           onChange={(event) => setEmail(event.target.value)}
           type="email"
           placeholder="Email"
           required
-          style={{ textAlign: "center", alignSelf: "center" }}
-        ></input>
+          className="alignSelf"
+          ></input>
         <input
           value={password}
           onChange={(event) => setPassword(event.target.value)}
           type="password"
           placeholder="password"
           required
-          style={{ textAlign: "center", alignSelf: "center" }}
-        ></input>
+          className="alignSelf"
+          ></input>
         <button
           type="submit"
           onClick={submitForm}
-          style={{ alignSelf: "center", marginTop: "5px" }}
-        >
+          className="loginButton"
+          >
           Login
         </button>
-        <div
-          style={{
-            alignSelf: "center",
-            fontSize: "12px",
-            marginTop: "5px",
-          }}
-        >
-          <Link to="/signup">Signup here</Link>
+        <div className="Link">
+          <Link to="/signup" className="noDecoration">Signup here</Link>
         </div>
       </div>
+          </form>
     </div>
   );
 }

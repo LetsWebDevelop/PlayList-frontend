@@ -4,6 +4,8 @@ import { selectUserToken } from "../store/user/selectors";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, Link } from "react-router-dom";
 
+import "./Signup.css"
+
 export default function SignupPage() {
   const [userName, setUserName] = useState("");
   const [email, setEmail] = useState("");
@@ -31,30 +33,28 @@ export default function SignupPage() {
 
   return (
     <div>
-      <h1 style={{ textAlign: "center" }}>Signup Page</h1>
+      <h1>Signup Page</h1>
 
+      <form onSubmit={submitForm} >
       <div
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          flexDirection: "column",
-        }}
+       className="mainBoxSignup"
       >
+
         <input
           value={userName}
           onChange={(event) => setUserName(event.target.value)}
           type="text"
           placeholder="Username"
           required
-          style={{ textAlign: "center", alignSelf: "center" }}
-        ></input>
+          className="alignSelfSignup"
+          ></input>
         <input
           value={email}
           onChange={(event) => setEmail(event.target.value)}
           type="email"
           placeholder="email"
           required
-          style={{ textAlign: "center", alignSelf: "center" }}
+          className="alignSelfSignup"
         ></input>
         <input
           value={password}
@@ -62,21 +62,22 @@ export default function SignupPage() {
           type="password"
           placeholder="password"
           required
-          style={{ textAlign: "center", alignSelf: "center" }}
+          className="alignSelfSignup"
         ></input>
         <button
           type="submit"
           onClick={submitForm}
-          style={{ alignSelf: "center", cursor: "pointer" }}
-        >
+          className="signupButton"
+          >
           Submit
         </button>
         <div
-          style={{ fontSize: "12px", alignSelf: "center", marginTop: "5px" }}
-        >
-          <Link to="/login">Click here to log in</Link>
+          className="LinkSignup"
+          >
+          <Link to="/login" className="noDecorationSignup">Click here to log in</Link>
         </div>
       </div>
+    </form>
     </div>
   );
 }

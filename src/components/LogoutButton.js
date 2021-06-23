@@ -17,7 +17,7 @@ export default function Logout() {
   return (
     <div>
       <button
-        style={{ backgroundColor: "red", cursor: "pointer" }}
+        className="logoutButton"
         onClick={handleLogout}
       >
         Logout
