@@ -2,12 +2,10 @@ import "./Popup.css";
 import { addSong } from "../store/PlaylistByID/actions";
 import { selectPlaylists } from "../store/Playlists/selectors";
 import { useDispatch, useSelector } from "react-redux";
-import { useState } from "react";
 
 export default function Popup(props) {
   const playlists = useSelector(selectPlaylists);
   const dispatch = useDispatch();
-  const [close, setClose] = useState("");
 
   const artistlistSearch = props.track.artists.map((artists) => {
     return artists.name;

@@ -79,6 +79,11 @@ export const fetchNewReleasesSpotify = () => {
       dispatch(fetchNewReleasesSpotifySucces(response.data.albums));
     } catch (error) {
       console.log("Error:", error);
+      if (error.response.status === 401) {
+        localStorage.setItem("noSpotifyToken", true);
+        dispatch(spotifyLogOut());
+        dispatch(appDoneLoading());
+      }
     }
   };
 };
