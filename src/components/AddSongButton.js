@@ -13,7 +13,13 @@ export default function AddSongButton(props) {
       <button className="addSongButtonStyle" onClick={togglePopup}>
         Add Song
       </button>
-      {openPopup && <Popup track={props.tracks} handleClose={togglePopup} />}
+      {openPopup && (
+        <Popup
+          track={props.tracks}
+          image={props.image}
+          handleClose={togglePopup}
+        />
+      )}
     </div>
   );
 }

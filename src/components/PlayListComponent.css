@@ -23,7 +23,6 @@
 .playSongPL {
   cursor: pointer;
   padding: 5px;
-  
 }
 
 .songTitleArtistBoxPL {
@@ -40,5 +39,4 @@
   margin-top: 2px;
   margin-bottom: 2px;
   margin-left: 4px;
-  color: grey;
 }

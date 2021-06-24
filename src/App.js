@@ -28,7 +28,7 @@ function App() {
   }, [dispatch]);
 
   return (
-    <div style={{ maxHeight: "99vh", minHeight: "99vh", overflow: "hidden" }}>
+    <div className="mainStyleApp">
       <NavBar />
 
       <Switch>

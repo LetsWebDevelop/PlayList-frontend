@@ -1,9 +1,10 @@
-import { useSelector } from "react-redux";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 
 import { selectUserToken } from "../store/user/selectors";
-
 import { selectSPOTIFYToken } from "../store/spotifyToken/selectors";
+import { fetchNewReleasesSpotify } from "../store/spotifyMusic/actions";
 
 import SpotifyMusic from "../spotify/SpotifyMusic";
 import MyPlayLists from "../components/MyPlayLists";
@@ -15,21 +16,25 @@ export default function HomePage() {
   const spotifyToken = useSelector(selectSPOTIFYToken);
   const userToken = useSelector(selectUserToken);
   const history = useHistory();
+  const dispatch = useDispatch();
 
-  if (!userToken) {
-    history.push("/login");
-  }
+  useEffect(() => {
+    if (!userToken) {
+      history.push("/login");
+    }
+    dispatch(fetchNewReleasesSpotify());
+  });
 
   return (
     <div>
       {spotifyToken && userToken && <Player />}
 
-      <div>{userToken && <SearchMusic />}</div>
+      <div>{spotifyToken && userToken && <SearchMusic />}</div>
       <div style={{ display: "flex", alignSelf: "flex-start" }}>
-        {userToken && <MyPlayLists />}
+        {spotifyToken && userToken && <MyPlayLists />}
 
         {spotifyToken && userToken && <SpotifyMusic />}
-        {userToken && <PlayListComponent />}
+        {spotifyToken && userToken && <PlayListComponent />}
       </div>
     </div>
   );
