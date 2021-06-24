@@ -5,7 +5,7 @@ import { useHistory } from "react-router-dom";
 
 import "./MyPlayLists.css";
 
-import { selectUserToken } from "../store/user/selectors";
+import { selectUser, selectUserToken } from "../store/user/selectors";
 import { selectPlaylists } from "../store/Playlists/selectors";
 import { fetchPlaylists, createNewPlaylist } from "../store/Playlists/actions";
 import { fetchPlaylistByID } from "../store/PlaylistByID/actions";
@@ -14,6 +14,7 @@ export default function MyPlayLists() {
   const [name, setName] = useState("");
   const [addList, setAddList] = useState(false);
   const dispatch = useDispatch();
+  const user = useSelector(selectUser);
   const userToken = useSelector(selectUserToken);
   const playlists = useSelector(selectPlaylists);
   const history = useHistory();
@@ -35,7 +36,7 @@ export default function MyPlayLists() {
   return (
     <div className="mainPlayListBox">
       <p className="playListBorderBottom">
-        My PlayLists{" "}
+        {user.username}'s PlayLists{" "}
         <button className="addPlaylistButton" onClick={() => setAddList(true)}>
           +
         </button>

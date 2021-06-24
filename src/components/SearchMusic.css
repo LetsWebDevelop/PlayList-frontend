@@ -1,11 +1,36 @@
 .searchMusicMain {
-    margin-left: 5px;
-    margin-top: 5px;
-    margin-bottom: 5px;
-    }
-
-.searchBox {
-    max-width: 95px;
-    font-size: 12px
+  margin-left: 5px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
 }
 
+.buttonBox {
+  font-size: 10px;
+  margin-bottom: 2px;
+  border: none;
+  cursor: pointer;
+  max-width: 80px;
+}
+
+.buttonBox:focus {
+  background-color: lightgreen;
+  color: white;
+}
+
+.searchBox {
+  max-width: 95px;
+  font-size: 10px;
+  margin-top: 5px;
+  max-width: 72px;
+  border: none;
+  background-color: transparent;
+}
+
+.searchBox:focus {
+  font-weight: bold;
+  border: none;
+  background-color: transparent;
+}

@@ -1,11 +1,21 @@
-import { FETCH_SPOTIFY_MUSIC, CLEAR_SPOTIFY_MUSIC } from "./actions";
+import {
+  FETCH_SPOTIFY_MUSIC,
+  NEW_SPOTIFY_MUSIC,
+  CLEAR_SPOTIFY_MUSIC,
+} from "./actions";
 
-const initialState = {};
+const initialState = {
+  searchResults: {},
+  newReleases: {},
+};
 
 export default function fetchMusicReducer(state = initialState, action) {
   switch (action.type) {
     case FETCH_SPOTIFY_MUSIC:
-      return { ...action.payload };
+      return { searchResults: { ...action.payload } };
+
+    case NEW_SPOTIFY_MUSIC:
+      return { newReleases: { ...action.payload } };
 
     case CLEAR_SPOTIFY_MUSIC:
       return {};
