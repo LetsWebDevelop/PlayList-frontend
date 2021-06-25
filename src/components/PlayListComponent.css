@@ -5,13 +5,12 @@
   font-size: 50%;
   margin-right: 20px;
   margin-left: -20px;
-  max-height: 68vh;
+  max-height: 80vh;
   overflow-y: auto;
 }
 
 .musicBoxPL {
   display: flex;
-  flex-direction: row;
   border-bottom: 1px solid grey;
   max-height: 14vh;
   max-width: 77vw;
@@ -39,4 +38,13 @@
   margin-top: 2px;
   margin-bottom: 2px;
   margin-left: 4px;
+}
+
+.playAllButton {
+  max-height: 15px;
+  min-height: 15px;
+  font-size: 10px;
+  border: none;
+  border-bottom: 1px solid grey;
+  margin-left: 5px;
 }

@@ -30,7 +30,6 @@ function App() {
   return (
     <div className="mainStyleApp">
       <NavBar />
-
       <Switch>
         <Route path="/signup" component={Signup} />
         <Route path="/login" component={Login} />

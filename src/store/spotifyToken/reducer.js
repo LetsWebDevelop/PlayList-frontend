@@ -1,17 +1,15 @@
 import { SET_SPOTIFY_TOKEN, SPOTIFY_LOG_OUT } from "./actions";
 
-const initialState = {
-  token: null,
-};
+const initialState = "";
 
 export default function spotifyTokenReducer(state = initialState, action) {
   switch (action.type) {
     case SET_SPOTIFY_TOKEN:
-      return { token: action.payload };
+      return action.payload;
 
     case SPOTIFY_LOG_OUT:
       localStorage.removeItem("spotifyToken");
-      return { ...initialState, token: null };
+      return "";
 
     default:
       return state;

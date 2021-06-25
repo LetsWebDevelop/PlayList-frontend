@@ -1,5 +1,7 @@
 .mainStyleApp {
-  max-height: 99vh;
-  min-height: 99vh;
-  overflow: hidden;
+  max-height: 100vh;
+  min-height: 100vh;
+  max-width: 100vw;
+  min-width: 100vw;
+  overflow: auto;
 }

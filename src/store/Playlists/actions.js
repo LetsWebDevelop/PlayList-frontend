@@ -33,7 +33,7 @@ export const fetchPlaylists = () => {
           Authorization: `Bearer ${userToken}`,
         },
       });
-      console.log(response.data.playlists);
+
       dispatch(fetchPlaylistSucces(response.data.playlists));
 
       dispatch(appDoneLoading());

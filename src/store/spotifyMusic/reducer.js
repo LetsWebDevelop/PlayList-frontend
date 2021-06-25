@@ -18,7 +18,7 @@ export default function fetchMusicReducer(state = initialState, action) {
       return { newReleases: { ...action.payload } };
 
     case CLEAR_SPOTIFY_MUSIC:
-      return {};
+      return { searchResults: {}, newReleases: {} };
 
     default:
       return state;

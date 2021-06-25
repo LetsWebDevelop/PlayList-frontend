@@ -31,7 +31,7 @@ export default function SpotifyLoginButton() {
 
   return (
     <div>
-      {!spotifyToken && spotify_token === null ? (
+      {!spotifyToken && spotify_token === "" ? (
         <button onClick={handleLogin} className="spotifyButtonRed">
           Connect to Spotify
         </button>

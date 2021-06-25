@@ -1,1 +1,1 @@
-export const selectSpotifySong = (state) => state.song.spotifySong;
+export const selectSpotifySong = (state) => state.song;

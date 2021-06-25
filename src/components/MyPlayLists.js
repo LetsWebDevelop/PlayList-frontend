@@ -9,6 +9,7 @@ import { selectUser, selectUserToken } from "../store/user/selectors";
 import { selectPlaylists } from "../store/Playlists/selectors";
 import { fetchPlaylists, createNewPlaylist } from "../store/Playlists/actions";
 import { fetchPlaylistByID } from "../store/PlaylistByID/actions";
+import { clearSpotifyMusic } from "../store/spotifyMusic/actions";
 
 export default function MyPlayLists() {
   const [name, setName] = useState("");
@@ -60,6 +61,7 @@ export default function MyPlayLists() {
               key={playlist.id}
               onClick={() => {
                 dispatch(fetchPlaylistByID(playlist.id));
+                dispatch(clearSpotifyMusic());
               }}
             >
               <p>{`${playlist.name}`}</p>

@@ -1,4 +1,5 @@
 import { NavLink } from "react-router-dom";
+import logo from "./logo.png";
 
 import "./NavBar.css";
 import SpotifyLoginButton from "../spotify/LoginButton";
@@ -13,13 +14,21 @@ export default function NavBar() {
   return (
     <div className="mainNav">
       <NavLink to="/" activeStyle={{ color: "lightgreen" }} exact>
-        PlayList()
+        <img src={logo} alt="PlayList logo" className="logoStyle" />
       </NavLink>
       {userToken && (
         <>
-          <SpotifyLoginButton />
-
-          <Logout />
+          <div
+            style={{
+              marginLeft: "auto",
+              marginRight: "auto",
+            }}
+          >
+            <SpotifyLoginButton />
+          </div>
+          <div>
+            <Logout />
+          </div>
         </>
       )}
     </div>

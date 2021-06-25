@@ -1,13 +1,11 @@
 import { SET_SPOTIFY_SONG } from "./actions";
 
-const initialState = {
-  spotifySong: null,
-};
+const initialState = "";
 
 export default function songReducer(state = initialState, action) {
   switch (action.type) {
     case SET_SPOTIFY_SONG:
-      return { spotifySong: action.payload };
+      return action.payload;
     default:
       return state;
   }
