@@ -1,10 +1,7 @@
 import { selectPlaylistByID } from "../store/PlaylistByID/selectors";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-import {
-  clearSpotifyMusic,
-  addSpotifyQueue,
-} from "../store/spotifyMusic/actions";
+import { clearSpotifyMusic } from "../store/spotifyMusic/actions";
 
 import "./PlayListComponent.css";
 import MusicComponent from "./MusicComponent";
@@ -14,10 +11,6 @@ export default function PlayListComponent() {
   const playlist = useSelector(selectPlaylistByID);
   const songs = playlist.songs;
   const dispatch = useDispatch();
-
-  // const array = songs?.map((song) => {
-  //   return song.uri;
-  // });
 
   // const index = array?.findIndex((item) => {
   //   if (URI === item) return item;
@@ -29,16 +22,17 @@ export default function PlayListComponent() {
   //   if (index === array[nextIndex]) return index;
   // });
 
-  // const playAll = () => {
-  //   array.forEach((item, index) => {
-  //     console.log(item);
-  //     // dispatch(addSpotifyQueue(item));
-  //   });
-  // };
-
-  // const space = `", "`;
-  // const arrayToString = array?.join(space);
   // const stringToJSON = JSON.stringify(arrayToString);
+  const playAll = () => {
+    const array = songs?.map((song) => {
+      return song.uri;
+    });
+    // const space =  ;
+    // const arrayToString = array?.join(",");
+    dispatch(setSpotifySong(array));
+    console.log("songs in playlist", array);
+    // console.log("this string bad", arrayToString);
+  };
 
   useEffect(() => {
     dispatch(clearSpotifyMusic());
@@ -49,9 +43,17 @@ export default function PlayListComponent() {
 
   return (
     <div className="mainBoxPL">
-      {/* <button onClick={playAll} style={{ alignSelf: "flex-start" }}>
+      <button
+        onClick={playAll}
+        style={{
+          marginLeft: "5px",
+          border: "none",
+          borderBottom: "1px solid black",
+          cursor: "pointer",
+        }}
+      >
         play all
-      </button> */}
+      </button>
 
       {songs?.length === 0 && (
         <div
@@ -71,9 +73,7 @@ export default function PlayListComponent() {
           <div key={song.id}>
             <div className="musicBoxPL">
               <div
-                onClick={() => {
-                  dispatch(setSpotifySong(song.uri));
-                }}
+                onClick={() => dispatch(setSpotifySong(song.uri))}
                 className="playSongPL"
               >
                 <MusicComponent img={song.image} />

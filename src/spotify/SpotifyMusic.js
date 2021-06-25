@@ -37,6 +37,14 @@ export default function SpotifyMusic() {
   //   if (index === array1[nextIndex]) return index;
   // });
 
+  const playAllSearch = () => {
+    const array = song?.items?.map((song) => {
+      return song.uri;
+    });
+    dispatch(setSpotifySong(array));
+    console.log("new releases", array);
+  };
+
   useEffect(() => {
     dispatch(clearPlaylistByID());
     // console.log("track", track);
@@ -90,6 +98,17 @@ export default function SpotifyMusic() {
         ))}
       {search && (
         <>
+          <button
+            onClick={playAllSearch}
+            style={{
+              marginLeft: "5px",
+              border: "none",
+              borderBottom: "1px solid black",
+              cursor: "pointer",
+            }}
+          >
+            play all
+          </button>
           {song?.items?.map((tracks) => {
             return (
               <div key={tracks.id}>
