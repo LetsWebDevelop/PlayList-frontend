@@ -13,7 +13,7 @@ export default function NavBar() {
 
   return (
     <div className="mainNav">
-      <NavLink to="/" activeStyle={{ color: "lightgreen" }} exact>
+      <NavLink to="/" exact>
         <img src={logo} alt="PlayList logo" className="logoStyle" />
       </NavLink>
       {userToken && (

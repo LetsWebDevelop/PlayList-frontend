@@ -18,6 +18,8 @@ export default function Player() {
     }
   };
 
+  console.log("track", spotifyTrack[0]);
+
   useEffect(() => setPlay(true), [spotifyTrack]);
 
   return (
@@ -26,7 +28,12 @@ export default function Player() {
         token={spotifyToken}
         callback={songPlaying}
         play={play}
-        uris={spotifyTrack ? [spotifyTrack] : []}
+        uris={spotifyTrack[0] ? spotifyTrack[0] : []}
+        // uris={[
+        //   "spotify:album:340wvzkkhWbH7wllc3UDLM",
+        //   "spotify:album:01NhUvviMytvV12pmJiDZH",
+        //   "spotify:album:1nAQbHeOWTfQzbOoFrvndW",
+        // ]}
       />
     </div>
   );
