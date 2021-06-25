@@ -1,4 +1,5 @@
 import axios from "axios";
+import { useSelector } from "react-redux";
 
 import { appLoading, appDoneLoading } from "../appState/actions";
 
@@ -23,10 +24,9 @@ export const fetchNewReleasesSpotifySucces = (spotifyMusic) => {
   };
 };
 
-export const clearSpotifyMusic = (spotifyMusic) => {
+export const clearSpotifyMusic = () => {
   return {
     type: CLEAR_SPOTIFY_MUSIC,
-    payload: spotifyMusic,
   };
 };
 
@@ -45,17 +45,12 @@ export const fetchSpotifyMusic = () => {
           },
         },
       );
-      console.log("search results", response.data.tracks);
       dispatch(fetchSpotifyMusicSucces(response.data.tracks));
 
       dispatch(appDoneLoading());
     } catch (error) {
       console.log(error);
-      if (error.response.status === 401) {
-        localStorage.setItem("noSpotifyToken", true);
-        dispatch(spotifyLogOut());
-        dispatch(appDoneLoading());
-      }
+      dispatch(appDoneLoading());
     }
   };
 };
@@ -74,8 +69,6 @@ export const fetchNewReleasesSpotify = () => {
           },
         },
       );
-
-      console.log("initial response (NEW):", response.data.albums);
       dispatch(fetchNewReleasesSpotifySucces(response.data.albums));
     } catch (error) {
       console.log("Error:", error);
@@ -84,6 +77,28 @@ export const fetchNewReleasesSpotify = () => {
         dispatch(spotifyLogOut());
         dispatch(appDoneLoading());
       }
+    }
+  };
+};
+
+export const addSpotifyQueue = (item) => {
+  return async (dispatch, getState) => {
+    dispatch(appLoading());
+    try {
+      const spotifyToken = localStorage.getItem("spotifyToken");
+
+      const response = await axios.post(
+        `https://api.spotify.com/v1/me/player/queue?uri=${item}`,
+        {
+          headers: {
+            Authorization: `Bearer ${spotifyToken}`,
+          },
+        },
+      );
+      console.log("add to queue response:", response);
+    } catch (error) {
+      console.log("Error:", error);
+      dispatch(appDoneLoading());
     }
   };
 };

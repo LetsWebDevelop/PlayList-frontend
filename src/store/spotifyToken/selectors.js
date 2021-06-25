@@ -1,1 +1,1 @@
-export const selectSPOTIFYToken = (state) => state.spotifyToken.token;
+export const selectSPOTIFYToken = (state) => state.spotifyToken;

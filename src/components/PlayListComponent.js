@@ -1,30 +1,81 @@
 import { selectPlaylistByID } from "../store/PlaylistByID/selectors";
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect, useState } from "react";
-import { clearSpotifyMusic } from "../store/spotifyMusic/actions";
+import { useEffect } from "react";
+import {
+  clearSpotifyMusic,
+  addSpotifyQueue,
+} from "../store/spotifyMusic/actions";
 
 import "./PlayListComponent.css";
 import MusicComponent from "./MusicComponent";
 import { setSpotifySong } from "../store/playSong/actions";
 
 export default function PlayListComponent() {
-  const [uri, setUri] = useState("");
   const playlist = useSelector(selectPlaylistByID);
   const songs = playlist.songs;
   const dispatch = useDispatch();
 
+  // const array = songs?.map((song) => {
+  //   return song.uri;
+  // });
+
+  // const index = array?.findIndex((item) => {
+  //   if (URI === item) return item;
+  // });
+
+  // const nextIndex = index + 1;
+
+  // const nextItem = array?.find((index) => {
+  //   if (index === array[nextIndex]) return index;
+  // });
+
+  // const playAll = () => {
+  //   array.forEach((item, index) => {
+  //     console.log(item);
+  //     // dispatch(addSpotifyQueue(item));
+  //   });
+  // };
+
+  // const space = `", "`;
+  // const arrayToString = array?.join(space);
+  // const stringToJSON = JSON.stringify(arrayToString);
+
   useEffect(() => {
     dispatch(clearSpotifyMusic());
-    dispatch(setSpotifySong(uri));
-  });
+    // console.log("playlist array", arrayToString);
+    // console.log("next", nextItem);
+    // localStorage.setItem("URIS", array);
+  }, [dispatch]);
 
   return (
     <div className="mainBoxPL">
+      {/* <button onClick={playAll} style={{ alignSelf: "flex-start" }}>
+        play all
+      </button> */}
+
+      {songs?.length === 0 && (
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "row",
+            justifyContent: "center",
+            textAlign: "center",
+          }}
+        >
+          <h3>So empty here! Add some songs!</h3>
+        </div>
+      )}
+
       {songs?.map((song) => {
         return (
           <div key={song.id}>
             <div className="musicBoxPL">
-              <div onClick={() => setUri(song.uri)} className="playSongPL">
+              <div
+                onClick={() => {
+                  dispatch(setSpotifySong(song.uri));
+                }}
+                className="playSongPL"
+              >
                 <MusicComponent img={song.image} />
               </div>
               <div className="songTitleArtistBoxPL">

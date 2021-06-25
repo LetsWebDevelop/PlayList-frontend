@@ -1,9 +1,10 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import AddSongButton from "../components/AddSongButton";
 import MusicComponent from "../components/MusicComponent";
 import "../components/MusicComponent.css";
+import { clearPlaylistByID } from "../store/PlaylistByID/actions";
 
 import { setSpotifySong } from "../store/playSong/actions";
 import { selectSearchInput } from "../store/searchInput/selectors";
@@ -16,13 +17,34 @@ export default function SpotifyMusic() {
   const song = useSelector(selectSpotifyMusic);
   const newRleases = useSelector(selectSpotifyNewReleases);
   const search = useSelector(selectSearchInput);
-
-  const [track, setTrack] = useState("");
+  // const [track, setTrack] = useState("");
   const dispatch = useDispatch();
 
+  // const array1 = newRleases?.items?.map((song) => {
+  //   return song.uri;
+  // });
+
+  // const space = `", "`;
+  // const thisArray = array1?.join();
+
+  // const index = array1?.findIndex((item) => {
+  //   if (track === item) return item;
+  // });
+
+  // const nextIndex = index + 1;
+
+  // const nextItem = array1?.find((index) => {
+  //   if (index === array1[nextIndex]) return index;
+  // });
+
   useEffect(() => {
-    dispatch(setSpotifySong(track));
-  }, [dispatch, track]);
+    dispatch(clearPlaylistByID());
+    // console.log("track", track);
+    // console.log("stringified?", thisArray);
+    // console.log("index:", index);
+    // console.log("nextIndex", nextIndex);
+    // console.log("nextItem", nextItem);
+  }, [dispatch]);
 
   return (
     <div className="mainBox">
@@ -34,7 +56,12 @@ export default function SpotifyMusic() {
                 <div key={tracks.id}>
                   <div className="musicBox">
                     <div
-                      onClick={() => setTrack(tracks.uri)}
+                      onClick={() => {
+                        dispatch(setSpotifySong(tracks.uri));
+                        // setTrack(tracks.uri);
+
+                        // console.log("allUris:", array1);
+                      }}
                       className="playSong"
                     >
                       <MusicComponent img={tracks?.images[2].url} />
@@ -68,7 +95,10 @@ export default function SpotifyMusic() {
               <div key={tracks.id}>
                 <div className="musicBox">
                   <div
-                    onClick={() => setTrack(tracks.uri)}
+                    onClick={() => {
+                      dispatch(setSpotifySong(tracks.uri));
+                      // setTrack(tracks.uri);
+                    }}
                     className="playSong"
                   >
                     <MusicComponent img={tracks.album.images[2].url} />

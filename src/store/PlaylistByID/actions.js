@@ -40,7 +40,6 @@ export const fetchPlaylistByID = (playlistID) => {
           Authorization: `Bearer ${userToken}`,
         },
       });
-      console.log("what does this do", response.data.playlists);
       dispatch(fetchPlaylistByIdSucces(response.data.playlists));
       dispatch(appDoneLoading());
     } catch (error) {

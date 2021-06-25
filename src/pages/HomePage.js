@@ -6,6 +6,8 @@ import { selectUserToken } from "../store/user/selectors";
 import { selectSPOTIFYToken } from "../store/spotifyToken/selectors";
 import { fetchNewReleasesSpotify } from "../store/spotifyMusic/actions";
 
+import "./HomePage.css";
+
 import SpotifyMusic from "../spotify/SpotifyMusic";
 import MyPlayLists from "../components/MyPlayLists";
 import Player from "../components/Player";
@@ -27,15 +29,15 @@ export default function HomePage() {
 
   return (
     <div>
-      {spotifyToken && userToken && <Player />}
-
-      <div>{spotifyToken && userToken && <SearchMusic />}</div>
-      <div style={{ display: "flex", alignSelf: "flex-start" }}>
-        {spotifyToken && userToken && <MyPlayLists />}
-
+      <div className="homeBox">
+        <div>
+          {spotifyToken && userToken && <SearchMusic />}
+          {spotifyToken && userToken && <MyPlayLists />}
+        </div>
         {spotifyToken && userToken && <SpotifyMusic />}
         {spotifyToken && userToken && <PlayListComponent />}
       </div>
+      <div>{spotifyToken && userToken && <Player />}</div>
     </div>
   );
 }
