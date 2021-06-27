@@ -1,5 +1,4 @@
 import axios from "axios";
-import { useSelector } from "react-redux";
 
 import { appLoading, appDoneLoading } from "../appState/actions";
 
@@ -7,7 +6,7 @@ import { selectSearchInput } from "../searchInput/selectors";
 import { spotifyLogOut } from "../spotifyToken/actions";
 
 export const FETCH_SPOTIFY_MUSIC = "FETCH_SPOTIFY_MUSIC";
-export const NEW_SPOTIFY_MUSIC = "NEW_SPOTIFY_MUSIC";
+export const DAILY_SPOTIFY_TOP50 = "DAILY_SPOTIFY_TOP50";
 export const CLEAR_SPOTIFY_MUSIC = "CLEAR_SPOTIFY_MUSIC";
 
 export const fetchSpotifyMusicSucces = (spotifyMusic) => {
@@ -17,9 +16,9 @@ export const fetchSpotifyMusicSucces = (spotifyMusic) => {
   };
 };
 
-export const fetchNewReleasesSpotifySucces = (spotifyMusic) => {
+export const fetchDailyTop50Succes = (spotifyMusic) => {
   return {
-    type: NEW_SPOTIFY_MUSIC,
+    type: DAILY_SPOTIFY_TOP50,
     payload: spotifyMusic,
   };
 };
@@ -55,21 +54,22 @@ export const fetchSpotifyMusic = () => {
   };
 };
 
-export const fetchNewReleasesSpotify = () => {
+export const fetchDailyTop50Spotify = () => {
   return async (dispatch, getState) => {
     dispatch(appLoading());
     try {
       const spotifyToken = localStorage.getItem("spotifyToken");
 
       const response = await axios.get(
-        "https://api.spotify.com/v1/browse/new-releases?offset=0&limit=50",
+        "https://api.spotify.com/v1/playlists/37i9dQZEVXbMDoHDwVN2tF",
         {
           headers: {
             Authorization: `Bearer ${spotifyToken}`,
           },
         },
       );
-      dispatch(fetchNewReleasesSpotifySucces(response.data.albums));
+      console.log(response.data.tracks);
+      dispatch(fetchDailyTop50Succes(response.data.tracks));
     } catch (error) {
       console.log("Error:", error);
       if (error.response.status === 401) {

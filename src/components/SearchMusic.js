@@ -5,7 +5,7 @@ import "./SearchMusic.css";
 
 import { setSearchInput } from "../store/searchInput/actions";
 import {
-  fetchNewReleasesSpotify,
+  fetchDailyTop50Spotify,
   fetchSpotifyMusic,
 } from "../store/spotifyMusic/actions";
 import { clearPlaylistByID } from "../store/PlaylistByID/actions";
@@ -31,11 +31,11 @@ export default function SearchMusic() {
     }
 
     dispatch(clearPlaylistByID());
-    dispatch(fetchNewReleasesSpotify());
+    dispatch(fetchDailyTop50Spotify());
   };
 
-  const NewReleases = () => {
-    dispatch(fetchNewReleasesSpotify());
+  const dailyTop50 = () => {
+    dispatch(fetchDailyTop50Spotify());
     dispatch(clearPlaylistByID());
     setSearch("");
     setSearchMusic(false);
@@ -43,8 +43,8 @@ export default function SearchMusic() {
 
   return (
     <div className="searchMusicMain">
-      <button className="buttonBox" onClick={NewReleases}>
-        New Releases
+      <button className="buttonBox" onClick={dailyTop50}>
+        Daily Top-50
       </button>
       <button className="buttonBox" onClick={SearchMusic}>
         Search Music

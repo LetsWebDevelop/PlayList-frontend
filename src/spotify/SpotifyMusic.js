@@ -10,12 +10,12 @@ import { setSpotifySong } from "../store/playSong/actions";
 import { selectSearchInput } from "../store/searchInput/selectors";
 import {
   selectSpotifyMusic,
-  selectSpotifyNewReleases,
+  selectDailyTop50Spotify,
 } from "../store/spotifyMusic/selectors";
 
 export default function SpotifyMusic() {
   const song = useSelector(selectSpotifyMusic);
-  const newRleases = useSelector(selectSpotifyNewReleases);
+  const dailyTop50 = useSelector(selectDailyTop50Spotify);
   const search = useSelector(selectSearchInput);
   // const [track, setTrack] = useState("");
   const dispatch = useDispatch();
@@ -37,12 +37,18 @@ export default function SpotifyMusic() {
   //   if (index === array1[nextIndex]) return index;
   // });
 
+  const playAllDailyTop50 = () => {
+    const array = dailyTop50?.items?.map((song) => {
+      return song.track.uri;
+    });
+    dispatch(setSpotifySong(array));
+  };
+
   const playAllSearch = () => {
     const array = song?.items?.map((song) => {
       return song.uri;
     });
     dispatch(setSpotifySong(array));
-    console.log("new releases", array);
   };
 
   useEffect(() => {
@@ -59,26 +65,37 @@ export default function SpotifyMusic() {
       {song?.length === 0 ||
         (!song && (
           <>
-            {newRleases?.items?.map((tracks) => {
+            <button
+              onClick={playAllDailyTop50}
+              style={{
+                marginLeft: "5px",
+                border: "none",
+                borderBottom: "1px solid black",
+                cursor: "pointer",
+              }}
+            >
+              play all
+            </button>
+            {dailyTop50?.items?.map((data) => {
               return (
-                <div key={tracks.id}>
+                <div key={data.track.id}>
                   <div className="musicBox">
                     <div
                       onClick={() => {
-                        dispatch(setSpotifySong(tracks.uri));
-                        // setTrack(tracks.uri);
+                        dispatch(setSpotifySong(data.track.uri));
+                        // setTrack(data.uri);
 
                         // console.log("allUris:", array1);
                       }}
                       className="playSong"
                     >
-                      <MusicComponent img={tracks?.images[2].url} />
+                      <MusicComponent img={data?.track.album.images[2].url} />
                     </div>
                     <div className="songTitleArtistBox">
                       <div className="defaultTitleText">
-                        <MusicComponent title={tracks.name} />
+                        <MusicComponent title={data.track.name} />
                       </div>
-                      {tracks.artists.map((artists) => {
+                      {data.track.artists.map((artists) => {
                         return (
                           <div className="defaultArtistText" key={artists.id}>
                             <MusicComponent artist={artists.name} />
@@ -86,8 +103,8 @@ export default function SpotifyMusic() {
                         );
                       })}
                       <AddSongButton
-                        tracks={tracks}
-                        image={tracks.images[2].url}
+                        tracks={data}
+                        image={data?.track.album.images[2].url}
                       />
                     </div>
                   </div>
