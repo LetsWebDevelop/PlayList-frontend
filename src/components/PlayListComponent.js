@@ -27,11 +27,8 @@ export default function PlayListComponent() {
     const array = songs?.map((song) => {
       return song.uri;
     });
-    // const space =  ;
-    // const arrayToString = array?.join(",");
+
     dispatch(setSpotifySong(array));
-    console.log("songs in playlist", array);
-    // console.log("this string bad", arrayToString);
   };
 
   useEffect(() => {
@@ -50,6 +47,7 @@ export default function PlayListComponent() {
           border: "none",
           borderBottom: "1px solid black",
           cursor: "pointer",
+          maxHeight: "20px",
         }}
       >
         play all

@@ -68,7 +68,7 @@ export const fetchDailyTop50Spotify = () => {
           },
         },
       );
-      console.log(response.data.tracks);
+
       dispatch(fetchDailyTop50Succes(response.data.tracks));
     } catch (error) {
       console.log("Error:", error);
