@@ -1,6 +1,6 @@
 import { selectPlaylistByID } from "../store/PlaylistByID/selectors";
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { clearSpotifyMusic } from "../store/spotifyMusic/actions";
 
 import "./PlayListComponent.css";
@@ -8,64 +8,67 @@ import MusicComponent from "./MusicComponent";
 import { setSpotifySong } from "../store/playSong/actions";
 
 export default function PlayListComponent() {
-  const [uri, setURI] = useState();
   const playlist = useSelector(selectPlaylistByID);
   const songs = playlist.songs;
   const dispatch = useDispatch();
 
-  // const index = array?.findIndex((item) => {
-  //   if (URI === item) return item;
-  // });
+  const playSong = (songURI) => {
+    const array = songs?.map((song) => {
+      return song.uri;
+    });
 
-  // const nextIndex = index + 1;
+    const index = array?.findIndex((index) => {
+      if (songURI === index) return index;
+      else return null;
+    });
 
-  // const nextItem = array?.find((index) => {
-  //   if (index === array[nextIndex]) return index;
-  // });
+    const next1 = index + 1;
+    const next2 = index + 2;
+    const next3 = index + 3;
+    const next4 = index + 4;
+    const next5 = index + 5;
+    // const next6 = index + 6;
+    // const next7 = index + 7;
+    // const next8 = index + 8;
+    // const next9 = index + 9;
+    // const next10 = index + 10;
 
-  // const stringToJSON = JSON.stringify(arrayToString);
+    const nextItem1 = array?.find((item) => {
+      if (item === array[next1]) return item;
+      else return null;
+    });
 
-  // const playSong = () => {
-  const array = songs?.map((song) => {
-    return song.uri;
-  });
+    const nextItem2 = array?.find((item) => {
+      if (item === array[next2]) return item;
+      else return null;
+    });
 
-  const index = array?.findIndex((item) => {
-    if (uri === item) return item;
-  });
+    const nextItem3 = array?.find((item) => {
+      if (item === array[next3]) return item;
+      else return null;
+    });
 
-  const next1 = index + 1;
-  const next2 = index + 2;
-  const next3 = index + 3;
-  const next4 = index + 4;
-  const next5 = index + 5;
-  const next6 = index + 6;
-  const next7 = index + 7;
-  const next8 = index + 8;
-  const next9 = index + 9;
-  const next10 = index + 10;
+    const nextItem4 = array?.find((item) => {
+      if (item === array[next4]) return item;
+      else return null;
+    });
 
-  const nextItem1 = array?.find((index) => {
-    if (index === array[next1]) return index;
-  });
+    const nextItem5 = array?.find((item) => {
+      if (item === array[next5]) return item;
+      else return null;
+    });
 
-  const nextItem2 = array?.find((index) => {
-    if (index === array[next2]) return index;
-  });
-
-  const nextItem3 = array?.find((index) => {
-    if (index === array[next3]) return index;
-  });
-
-  console.log(index);
-  console.log("next1", nextItem1);
-  console.log("next2", nextItem2);
-  console.log("next3", nextItem3);
-
-  const newArray = new Array(uri, nextItem1, nextItem2, nextItem3);
-  // };
-
-  console.log("new array", newArray);
+    const newArray = new Array([
+      songURI,
+      nextItem1,
+      nextItem2,
+      nextItem3,
+      nextItem4,
+      nextItem5,
+    ]);
+    dispatch(setSpotifySong(newArray[0]));
+    console.log("new array", newArray[0]);
+  };
 
   const playAll = () => {
     const array = songs?.map((song) => {
@@ -113,8 +116,7 @@ export default function PlayListComponent() {
             <div className="musicBoxPL">
               <div
                 onClick={() => {
-                  setURI(song.uri);
-                  dispatch(setSpotifySong(newArray));
+                  playSong(song.uri);
                 }}
                 className="playSongPL"
               >

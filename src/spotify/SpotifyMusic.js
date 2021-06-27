@@ -17,25 +17,7 @@ export default function SpotifyMusic() {
   const song = useSelector(selectSpotifyMusic);
   const dailyTop50 = useSelector(selectDailyTop50Spotify);
   const search = useSelector(selectSearchInput);
-  // const [track, setTrack] = useState("");
   const dispatch = useDispatch();
-
-  // const array1 = newRleases?.items?.map((song) => {
-  //   return song.uri;
-  // });
-
-  // const space = `", "`;
-  // const thisArray = array1?.join();
-
-  // const index = array1?.findIndex((item) => {
-  //   if (track === item) return item;
-  // });
-
-  // const nextIndex = index + 1;
-
-  // const nextItem = array1?.find((index) => {
-  //   if (index === array1[nextIndex]) return index;
-  // });
 
   const playAllDailyTop50 = () => {
     const array = dailyTop50?.items?.map((song) => {
@@ -53,11 +35,6 @@ export default function SpotifyMusic() {
 
   useEffect(() => {
     dispatch(clearPlaylistByID());
-    // console.log("track", track);
-    // console.log("stringified?", thisArray);
-    // console.log("index:", index);
-    // console.log("nextIndex", nextIndex);
-    // console.log("nextItem", nextItem);
   }, [dispatch]);
 
   return (
