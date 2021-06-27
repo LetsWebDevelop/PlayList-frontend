@@ -1,6 +1,6 @@
 import { selectPlaylistByID } from "../store/PlaylistByID/selectors";
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { clearSpotifyMusic } from "../store/spotifyMusic/actions";
 
 import "./PlayListComponent.css";
@@ -8,6 +8,7 @@ import MusicComponent from "./MusicComponent";
 import { setSpotifySong } from "../store/playSong/actions";
 
 export default function PlayListComponent() {
+  const [uri, setURI] = useState();
   const playlist = useSelector(selectPlaylistByID);
   const songs = playlist.songs;
   const dispatch = useDispatch();
@@ -23,6 +24,49 @@ export default function PlayListComponent() {
   // });
 
   // const stringToJSON = JSON.stringify(arrayToString);
+
+  // const playSong = () => {
+  const array = songs?.map((song) => {
+    return song.uri;
+  });
+
+  const index = array?.findIndex((item) => {
+    if (uri === item) return item;
+  });
+
+  const next1 = index + 1;
+  const next2 = index + 2;
+  const next3 = index + 3;
+  const next4 = index + 4;
+  const next5 = index + 5;
+  const next6 = index + 6;
+  const next7 = index + 7;
+  const next8 = index + 8;
+  const next9 = index + 9;
+  const next10 = index + 10;
+
+  const nextItem1 = array?.find((index) => {
+    if (index === array[next1]) return index;
+  });
+
+  const nextItem2 = array?.find((index) => {
+    if (index === array[next2]) return index;
+  });
+
+  const nextItem3 = array?.find((index) => {
+    if (index === array[next3]) return index;
+  });
+
+  console.log(index);
+  console.log("next1", nextItem1);
+  console.log("next2", nextItem2);
+  console.log("next3", nextItem3);
+
+  const newArray = new Array(uri, nextItem1, nextItem2, nextItem3);
+  // };
+
+  console.log("new array", newArray);
+
   const playAll = () => {
     const array = songs?.map((song) => {
       return song.uri;
@@ -33,9 +77,6 @@ export default function PlayListComponent() {
 
   useEffect(() => {
     dispatch(clearSpotifyMusic());
-    // console.log("playlist array", arrayToString);
-    // console.log("next", nextItem);
-    // localStorage.setItem("URIS", array);
   }, [dispatch]);
 
   return (
@@ -71,7 +112,10 @@ export default function PlayListComponent() {
           <div key={song.id}>
             <div className="musicBoxPL">
               <div
-                onClick={() => dispatch(setSpotifySong(song.uri))}
+                onClick={() => {
+                  setURI(song.uri);
+                  dispatch(setSpotifySong(newArray));
+                }}
                 className="playSongPL"
               >
                 <MusicComponent img={song.image} />
