@@ -72,6 +72,7 @@ export default function SpotifyMusic() {
                 border: "none",
                 borderBottom: "1px solid black",
                 cursor: "pointer",
+                maxHeight: "20px",
               }}
             >
               play all
@@ -122,6 +123,7 @@ export default function SpotifyMusic() {
               border: "none",
               borderBottom: "1px solid black",
               cursor: "pointer",
+              maxHeight: "20px",
             }}
           >
             play all

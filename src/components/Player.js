@@ -18,8 +18,6 @@ export default function Player() {
     }
   };
 
-  console.log("track", spotifyTrack[0]);
-
   useEffect(() => setPlay(true), [spotifyTrack]);
 
   return (
