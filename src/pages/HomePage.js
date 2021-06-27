@@ -4,7 +4,7 @@ import { useHistory } from "react-router-dom";
 
 import { selectUserToken } from "../store/user/selectors";
 import { selectSPOTIFYToken } from "../store/spotifyToken/selectors";
-import { fetchNewReleasesSpotify } from "../store/spotifyMusic/actions";
+import { fetchDailyTop50Spotify } from "../store/spotifyMusic/actions";
 
 import "./HomePage.css";
 
@@ -24,7 +24,7 @@ export default function HomePage() {
     if (!userToken) {
       history.push("/login");
     }
-    dispatch(fetchNewReleasesSpotify());
+    dispatch(fetchDailyTop50Spotify());
   });
 
   return (
