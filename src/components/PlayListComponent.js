@@ -58,16 +58,72 @@ export default function PlayListComponent() {
       else return null;
     });
 
-    const newArray = new Array([
-      songURI,
-      nextItem1,
-      nextItem2,
-      nextItem3,
-      nextItem4,
-      nextItem5,
-    ]);
-    dispatch(setSpotifySong(newArray[0]));
-    console.log("new array", newArray[0]);
+    if (
+      (nextItem1 === undefined &&
+        nextItem2 === undefined &&
+        nextItem3 === undefined &&
+        nextItem4 === undefined &&
+        nextItem5 === undefined) ||
+      (nextItem1 === null &&
+        nextItem2 === null &&
+        nextItem3 === null &&
+        nextItem4 === null &&
+        nextItem5 === null)
+    ) {
+      const newArray = new Array([songURI]);
+      dispatch(setSpotifySong(newArray[0]));
+      console.log("new array", newArray[0]);
+    } else if (
+      (nextItem2 === undefined &&
+        nextItem3 === undefined &&
+        nextItem4 === undefined &&
+        nextItem5 === undefined) ||
+      (nextItem2 === null &&
+        nextItem3 === null &&
+        nextItem4 === null &&
+        nextItem5 === null)
+    ) {
+      const newArray = new Array([songURI, nextItem1]);
+      dispatch(setSpotifySong(newArray[0]));
+      console.log("new array", newArray[0]);
+    } else if (
+      (nextItem3 === undefined &&
+        nextItem4 === undefined &&
+        nextItem5 === undefined) ||
+      (nextItem3 === null && nextItem4 === null && nextItem5 === null)
+    ) {
+      const newArray = new Array([songURI, nextItem1, nextItem2]);
+      dispatch(setSpotifySong(newArray[0]));
+      console.log("new array", newArray[0]);
+    } else if (
+      (nextItem4 === undefined && nextItem5 === undefined) ||
+      (nextItem4 === null && nextItem5 === null)
+    ) {
+      const newArray = new Array([songURI, nextItem1, nextItem2, nextItem3]);
+      dispatch(setSpotifySong(newArray[0]));
+      console.log("new array", newArray[0]);
+    } else if (nextItem5 === undefined || nextItem5 === null) {
+      const newArray = new Array([
+        songURI,
+        nextItem1,
+        nextItem2,
+        nextItem3,
+        nextItem4,
+      ]);
+      dispatch(setSpotifySong(newArray[0]));
+      console.log("new array", newArray[0]);
+    } else {
+      const newArray = new Array([
+        songURI,
+        nextItem1,
+        nextItem2,
+        nextItem3,
+        nextItem4,
+        nextItem5,
+      ]);
+      dispatch(setSpotifySong(newArray[0]));
+      console.log("new array", newArray[0]);
+    }
   };
 
   const playAll = () => {
@@ -89,7 +145,7 @@ export default function PlayListComponent() {
         style={{
           marginLeft: "5px",
           border: "none",
-          borderBottom: "1px solid black",
+          borderBottom: "1px solid grey",
           cursor: "pointer",
           maxHeight: "20px",
         }}

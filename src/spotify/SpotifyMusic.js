@@ -19,6 +19,8 @@ export default function SpotifyMusic() {
   const search = useSelector(selectSearchInput);
   const dispatch = useDispatch();
 
+  console.log("check this one:::", dailyTop50);
+
   const playAllDailyTop50 = () => {
     const array = dailyTop50?.items?.map((song) => {
       return song.track.uri;
@@ -54,26 +56,26 @@ export default function SpotifyMusic() {
             >
               play all
             </button>
-            {dailyTop50?.items?.map((data) => {
+            {dailyTop50?.items?.map((tracks) => {
               return (
-                <div key={data.track.id}>
+                <div key={tracks.track.id}>
                   <div className="musicBox">
                     <div
                       onClick={() => {
-                        dispatch(setSpotifySong(data.track.uri));
-                        // setTrack(data.uri);
+                        dispatch(setSpotifySong(tracks.track.uri));
+                        // setTrack(tracks.uri);
 
                         // console.log("allUris:", array1);
                       }}
                       className="playSong"
                     >
-                      <MusicComponent img={data?.track.album.images[2].url} />
+                      <MusicComponent img={tracks?.track.album.images[2].url} />
                     </div>
                     <div className="songTitleArtistBox">
                       <div className="defaultTitleText">
-                        <MusicComponent title={data.track.name} />
+                        <MusicComponent title={tracks.track.name} />
                       </div>
-                      {data.track.artists.map((artists) => {
+                      {tracks.track.artists.map((artists) => {
                         return (
                           <div className="defaultArtistText" key={artists.id}>
                             <MusicComponent artist={artists.name} />
@@ -81,8 +83,8 @@ export default function SpotifyMusic() {
                         );
                       })}
                       <AddSongButton
-                        tracks={data}
-                        image={data?.track.album.images[2].url}
+                        tracks={tracks.track}
+                        image={tracks.track.album.images[2].url}
                       />
                     </div>
                   </div>
