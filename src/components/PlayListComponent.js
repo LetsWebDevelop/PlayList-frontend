@@ -145,7 +145,7 @@ export default function PlayListComponent() {
         style={{
           marginLeft: "5px",
           border: "none",
-          borderBottom: "1px solid black",
+          borderBottom: "1px solid grey",
           cursor: "pointer",
           maxHeight: "20px",
         }}
