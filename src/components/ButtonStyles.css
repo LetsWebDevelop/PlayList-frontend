@@ -11,6 +11,7 @@
   margin-bottom: 5px;
   border: none;
   border-radius: 5%;
+  border-bottom: 1px solid grey;
   font-size: 10px;
   font-weight: bold;
   color: rgb(233, 233, 233);
@@ -23,7 +24,7 @@
   border: none;
   border-radius: 5%;
   border-bottom: 1px solid grey;
-  color: rgb(255, 255, 255);
+  color: rgb(233, 233, 233);
   background-color: rgb(248, 8, 8);
   cursor: pointer;
 }
@@ -41,10 +42,10 @@
 .spotifyButtonGreen {
   font-weight: bold;
   border: none;
-  border-radius: 5%;
+  border-radius: 2%;
   border-bottom: 1px solid grey;
-  color: rgb(255, 255, 255);
-  background-color: lightgreen;
+  color: rgb(233, 233, 233);
+  background-color: rgb(143, 5, 143);
   cursor: pointer;
 }
 
