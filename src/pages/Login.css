@@ -20,7 +20,8 @@ h1 {
   border: none;
   cursor: pointer;
   background-color: rgb(143, 5, 143);
-  color: white;
+  color: rgb(194, 188, 207);
+  font-weight: bold;
 }
 
 .Link {

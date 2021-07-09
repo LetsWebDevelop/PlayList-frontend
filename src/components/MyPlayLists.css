@@ -39,7 +39,7 @@
   min-height: 20px;
   font-size: 12px;
   margin-top: 1px;
-  color: rgb(233, 233, 233);
+  color: rgb(194, 188, 207);
   border: none;
   background-color: transparent;
 }
@@ -47,4 +47,5 @@
 .addPLBox:focus {
   border: none;
   background-color: transparent;
+  outline-color: rgb(143, 5, 143);
 }

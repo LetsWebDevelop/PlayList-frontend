@@ -38,7 +38,10 @@ export default function MyPlayLists() {
     <div className="mainPlayListBox">
       <p className="playListBorderBottom">
         {user.username}'s PlayLists{" "}
-        <button className="addPlaylistButton" onClick={() => setAddList(true)}>
+        <button
+          className="addPlaylistButton"
+          onClick={() => setAddList(!addList)}
+        >
           +
         </button>
       </p>
