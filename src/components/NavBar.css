@@ -4,9 +4,10 @@
   padding: 5px;
   margin-bottom: 5px;
   border-bottom: 1px solid grey;
+  max-height: 3vh;
 }
 
 .logoStyle {
-  max-height: 5vh;
+  max-height: 3vh;
   align-self: flex-start;
 }

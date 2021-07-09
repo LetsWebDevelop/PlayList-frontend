@@ -18,16 +18,10 @@ export default function NavBar() {
       </NavLink>
       {userToken && (
         <>
-          <div
-            style={{
-              marginTop: "10px",
-              marginLeft: "auto",
-              marginRight: "auto",
-            }}
-          >
+          <div style={{ marginRight: "auto", marginLeft: "auto" }}>
             <SpotifyLoginButton />
           </div>
-          <div style={{ marginTop: "10px" }}>
+          <div>
             <Logout />
           </div>
         </>

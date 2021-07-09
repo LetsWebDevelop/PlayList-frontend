@@ -32,9 +32,9 @@ export default function Player() {
           color: "rgb(194, 188, 207)",
           trackNameColor: "rgb(194, 188, 207)",
           sliderColor: "rgb(143, 5, 143)",
-          height: 73,
-          sliderHeight: 4,
-          loaderSize: 32,
+          height: 45,
+          sliderHeight: 2,
+          loaderSize: 10,
         }}
       />
     </div>

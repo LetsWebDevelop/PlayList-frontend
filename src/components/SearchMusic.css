@@ -1,7 +1,7 @@
 .searchMusicMain {
   margin-left: 5px;
-  margin-top: 5px;
   margin-bottom: 5px;
+  margin-top: 2px;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -27,7 +27,7 @@
 }
 
 .searchBox {
-  max-width: 95px;
+  max-width: 80px;
   min-height: 20px;
   font-size: 12px;
   margin-top: 5px;

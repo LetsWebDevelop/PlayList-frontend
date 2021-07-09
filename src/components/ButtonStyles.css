@@ -4,7 +4,7 @@
   align-items: flex-end;
   justify-content: flex-start;
   flex-direction: row;
-  margin-top: 21px;
+  margin-top: 0.5vh;
 }
 
 .addSongButtonStyle {
@@ -12,7 +12,7 @@
   border: none;
   border-radius: 5%;
   border-bottom: 1px solid grey;
-  font-size: 10px;
+  font-size: 120%;
   font-weight: bold;
   color: rgb(194, 188, 207);
   background-color: rgb(143, 5, 143);
@@ -21,6 +21,8 @@
 
 .logoutButton {
   font-weight: bold;
+  font-size: 10px;
+  max-height: 2vh;
   border: none;
   border-radius: 5%;
   border-bottom: 1px solid grey;
@@ -30,6 +32,8 @@
 }
 
 .spotifyButtonRed {
+  font-size: 10px;
+  max-height: 2vh;
   font-weight: bold;
   border: none;
   border-radius: 5%;
@@ -40,6 +44,8 @@
 }
 
 .spotifyButtonGreen {
+  font-size: 10px;
+  max-height: 2vh;
   font-weight: bold;
   border: none;
   border-radius: 2%;
@@ -50,11 +56,11 @@
 }
 
 .playAllButton {
-  max-height: 20px;
-  min-height: 20px;
-  margin-left: 25px;
+  max-height: 2vh;
+  min-height: 2vh;
+  margin-left: 15px;
   margin-bottom: 5px;
-  font-size: 12px;
+  font-size: 10px;
   font-weight: bold;
   border: none;
   border-radius: 5%;
