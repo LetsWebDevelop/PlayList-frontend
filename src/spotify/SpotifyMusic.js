@@ -1,17 +1,17 @@
-import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import AddSongButton from "../components/AddSongButton";
 import MusicComponent from "../components/MusicComponent";
-import "../components/MusicComponent.css";
-import { clearPlaylistByID } from "../store/PlaylistByID/actions";
+import PlayAllButton from "../components/PlayAllButton";
 
-import { setSpotifySong } from "../store/playSong/actions";
 import { selectSearchInput } from "../store/searchInput/selectors";
 import {
   selectSpotifyMusic,
   selectDailyTop50Spotify,
 } from "../store/spotifyMusic/selectors";
+
+import "../components/PlayListComponent.css";
+import { useEffect } from "react";
+import { clearPlaylistByID } from "../store/PlaylistByID/actions";
 
 export default function SpotifyMusic() {
   const song = useSelector(selectSpotifyMusic);
@@ -19,128 +19,63 @@ export default function SpotifyMusic() {
   const search = useSelector(selectSearchInput);
   const dispatch = useDispatch();
 
-  console.log("check this one:::", dailyTop50);
+  const top50List = dailyTop50?.items;
+  const searchList = song?.items;
 
-  const playAllDailyTop50 = () => {
-    const array = dailyTop50?.items?.map((song) => {
-      return song.track.uri;
-    });
-    dispatch(setSpotifySong(array));
-  };
+  const playAllDailyTop50 = dailyTop50?.items?.map((song) => {
+    return song.track.uri;
+  });
 
-  const playAllSearch = () => {
-    const array = song?.items?.map((song) => {
-      return song.uri;
-    });
-    dispatch(setSpotifySong(array));
-  };
+  const playAllSearch = song?.items?.map((song) => {
+    return song.uri;
+  });
 
   useEffect(() => {
     dispatch(clearPlaylistByID());
-  }, [dispatch]);
+  });
 
   return (
-    <div className="mainBox">
+    <div>
       {song?.length === 0 ||
         (!song && (
-          <>
-            <button
-              onClick={playAllDailyTop50}
-              style={{
-                marginLeft: "5px",
-                border: "none",
-                borderBottom: "1px solid black",
-                cursor: "pointer",
-                maxHeight: "20px",
-              }}
-            >
-              play all
-            </button>
-            {dailyTop50?.items?.map((tracks) => {
-              return (
-                <div key={tracks.track.id}>
-                  <div className="musicBox">
-                    <div
-                      onClick={() => {
-                        dispatch(setSpotifySong(tracks.track.uri));
-                        // setTrack(tracks.uri);
-
-                        // console.log("allUris:", array1);
-                      }}
-                      className="playSong"
-                    >
-                      <MusicComponent img={tracks?.track.album.images[2].url} />
-                    </div>
-                    <div className="songTitleArtistBox">
-                      <div className="defaultTitleText">
-                        <MusicComponent title={tracks.track.name} />
-                      </div>
-                      {tracks.track.artists.map((artists) => {
-                        return (
-                          <div className="defaultArtistText" key={artists.id}>
-                            <MusicComponent artist={artists.name} />
-                          </div>
-                        );
-                      })}
-                      <AddSongButton
-                        tracks={tracks.track}
-                        image={tracks.track.album.images[2].url}
-                      />
-                    </div>
+          <div>
+            <PlayAllButton playAll={playAllDailyTop50} />
+            <div className="mainBoxPL">
+              {dailyTop50?.items?.map((tracks) => {
+                return (
+                  <div key={tracks.track.id}>
+                    <MusicComponent
+                      dataTop50={tracks}
+                      top50Array={top50List}
+                      img={tracks?.track.album.images[2].url}
+                      title={tracks.track.name}
+                      uri={tracks.track.uri}
+                    />
                   </div>
+                );
+              })}
+            </div>
+          </div>
+        ))}
+      {search && song?.items?.length > 0 && (
+        <div>
+          <PlayAllButton playAll={playAllSearch} />
+          <div className="mainBoxPL">
+            {song?.items?.map((tracks) => {
+              return (
+                <div key={tracks.id}>
+                  <MusicComponent
+                    dataSearch={tracks}
+                    searchArray={searchList}
+                    img={tracks.album.images[2].url}
+                    title={tracks.name}
+                    uri={tracks.uri}
+                  />
                 </div>
               );
             })}
-          </>
-        ))}
-      {search && (
-        <>
-          <button
-            onClick={playAllSearch}
-            style={{
-              marginLeft: "5px",
-              border: "none",
-              borderBottom: "1px solid black",
-              cursor: "pointer",
-              maxHeight: "20px",
-            }}
-          >
-            play all
-          </button>
-          {song?.items?.map((tracks) => {
-            return (
-              <div key={tracks.id}>
-                <div className="musicBox">
-                  <div
-                    onClick={() => {
-                      dispatch(setSpotifySong(tracks.uri));
-                      // setTrack(tracks.uri);
-                    }}
-                    className="playSong"
-                  >
-                    <MusicComponent img={tracks.album.images[2].url} />
-                  </div>
-                  <div className="songTitleArtistBox">
-                    <div className="defaultTitleText">
-                      <MusicComponent title={tracks.name} />
-                    </div>
-                    {tracks.artists.map((artists) => {
-                      return (
-                        <div className="defaultArtistText" key={artists.id}>
-                          <MusicComponent artist={artists.name} />
-                        </div>
-                      );
-                    })}
-                    <AddSongButton
-                      tracks={tracks}
-                      image={tracks.album.images[2].url}
-                    />
-                  </div>
-                </div>
-              </div>
-            );
-          })}
-        </>
+          </div>
+        </div>
       )}
     </div>
   );

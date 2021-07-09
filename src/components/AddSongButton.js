@@ -16,6 +16,7 @@ export default function AddSongButton(props) {
       {openPopup && (
         <Popup
           track={props.tracks}
+          top50Track={props.tracksTop50}
           image={props.image}
           handleClose={togglePopup}
         />

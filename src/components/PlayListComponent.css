@@ -4,17 +4,20 @@
   text-align: left;
   font-size: 50%;
   margin-right: 20px;
-  margin-left: -20px;
+  margin-left: 20px;
   max-height: 80vh;
   overflow-y: auto;
+}
+.mainBoxPL::-webkit-scrollbar {
+  display: none;
 }
 
 .musicBoxPL {
   display: flex;
   border-bottom: 1px solid grey;
   max-height: 14vh;
-  max-width: 77vw;
-  min-width: 77vw;
+  max-width: 85vw;
+  min-width: 85vw;
   overflow-y: auto;
   overflow-x: hidden;
 }
@@ -26,25 +29,16 @@
 
 .songTitleArtistBoxPL {
   margin-left: 3px;
-  padding: 2px;
 }
 
 .defaultTitleTextPL {
-  font-size: 150%;
+  font-size: 180%;
+  margin-top: 5px;
 }
 
 .defaultArtistTextPL {
-  font-size: 120%;
+  font-size: 140%;
   margin-top: 2px;
   margin-bottom: 2px;
-  margin-left: 4px;
-}
-
-.playAllButton {
-  max-height: 15px;
-  min-height: 15px;
-  font-size: 10px;
-  border: none;
-  border-bottom: 1px solid grey;
   margin-left: 5px;
 }
