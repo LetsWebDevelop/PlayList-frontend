@@ -8,12 +8,17 @@
 }
 
 .buttonBox {
-  font-size: 10px;
-  margin-bottom: 2px;
+  font-size: 12px;
+  font-weight: bold;
+  margin-bottom: 4px;
   border: none;
+  border-radius: 5%;
   border-bottom: 1px solid black;
   cursor: pointer;
-  max-width: 80px;
+  max-width: 100px;
+  min-height: 20px;
+  color: rgb(233, 233, 233);
+  background-color: rgb(143, 5, 143);
 }
 
 .buttonBox:focus {
@@ -23,15 +28,15 @@
 
 .searchBox {
   max-width: 95px;
-  font-size: 10px;
+  min-height: 20px;
+  font-size: 12px;
   margin-top: 5px;
-  max-width: 72px;
+  color: rgb(233, 233, 233);
   border: none;
   background-color: transparent;
 }
 
 .searchBox:focus {
-  font-weight: bold;
   border: none;
   background-color: transparent;
 }

@@ -1,7 +1,13 @@
 .mainStyleApp {
   max-height: 100vh;
   min-height: 100vh;
-  max-width: 100vw;
-  min-width: 100vw;
+  max-width: 100%;
+  min-width: 100%;
   overflow: auto;
+  background-color: rgb(42, 40, 46);
+  color: rgb(194, 188, 207);
+}
+
+.mainStyleApp::-webkit-scrollbar {
+  display: none;
 }

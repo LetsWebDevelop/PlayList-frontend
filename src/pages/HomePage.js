@@ -24,6 +24,7 @@ export default function HomePage() {
     if (!userToken) {
       history.push("/login");
     }
+
     dispatch(fetchDailyTop50Spotify());
   });
 

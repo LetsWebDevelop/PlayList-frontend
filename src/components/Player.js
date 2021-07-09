@@ -27,11 +27,15 @@ export default function Player() {
         callback={songPlaying}
         play={play}
         uris={spotifyTrack[0] ? spotifyTrack[0] : []}
-        // uris={[
-        //   "spotify:album:340wvzkkhWbH7wllc3UDLM",
-        //   "spotify:album:01NhUvviMytvV12pmJiDZH",
-        //   "spotify:album:1nAQbHeOWTfQzbOoFrvndW",
-        // ]}
+        styles={{
+          bgColor: "rgb(42, 40, 46)",
+          color: "rgb(194, 188, 207)",
+          trackNameColor: "rgb(194, 188, 207)",
+          sliderColor: "rgb(143, 5, 143)",
+          height: 48,
+          sliderHeight: 4,
+          loaderSize: 32,
+        }}
       />
     </div>
   );

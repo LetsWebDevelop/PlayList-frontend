@@ -49,6 +49,7 @@ export default function MyPlayLists() {
             value={name}
             onChange={(event) => setName(event.target.value)}
             placeholder="New PlayList"
+            className="addPLBox"
           ></input>
         </form>
       )}

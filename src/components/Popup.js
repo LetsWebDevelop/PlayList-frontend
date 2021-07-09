@@ -7,15 +7,19 @@ export default function Popup(props) {
   const playlists = useSelector(selectPlaylists);
   const dispatch = useDispatch();
 
-  const artistlistSearch = props.track.artists.map((artists) => {
+  const artistlistSearch = props.track?.artists?.map((artists) => {
+    return artists.name;
+  });
+
+  const artistlistTop50 = props.top50Track?.artists?.map((artists) => {
     return artists.name;
   });
 
   const space = ", ";
-  const artist = artistlistSearch.join(space);
-  const title = props.track.name;
+  const artist = artistlistSearch?.join(space) || artistlistTop50?.join(space);
+  const title = props.track?.name || props.top50Track?.name;
   const image = props.image;
-  const uri = props.track.uri;
+  const uri = props.track?.uri || props.top50Track?.uri;
   const origin = "Spotify";
 
   function Succes(playlist) {

@@ -20,13 +20,14 @@ export default function NavBar() {
         <>
           <div
             style={{
+              marginTop: "10px",
               marginLeft: "auto",
               marginRight: "auto",
             }}
           >
             <SpotifyLoginButton />
           </div>
-          <div>
+          <div style={{ marginTop: "10px" }}>
             <Logout />
           </div>
         </>
