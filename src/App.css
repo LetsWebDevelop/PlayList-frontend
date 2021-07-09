@@ -4,6 +4,7 @@
   max-width: 100%;
   min-width: 100%;
   overflow: auto;
+  overflow-x: hidden;
   background-color: rgb(42, 40, 46);
   color: rgb(194, 188, 207);
 }

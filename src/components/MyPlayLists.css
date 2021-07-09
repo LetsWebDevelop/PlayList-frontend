@@ -1,5 +1,10 @@
+.mainPlayListBox {
+  margin-left: 2px;
+  min-width: 35vw;
+  max-width: 35vw;
+}
 .clickBox {
-  font-size: 12px;
+  font-size: 10px;
   font-style: italic;
   border-bottom: 1px solid grey;
   cursor: pointer;
@@ -7,12 +12,15 @@
 
 .playlistBox {
   text-align: left;
-  min-height: 60vh;
-  max-height: 60vh;
+  max-height: 62vh;
+  min-height: 62vh;
   overflow: auto;
   direction: rtl;
   padding-left: 4px;
   padding-right: 4px;
+}
+.playlistBox::-webkit-scrollbar {
+  display: none;
 }
 
 .addPlaylistButton {
@@ -24,18 +32,13 @@
 }
 
 .playListBorderBottom {
+  font-size: 14px;
   font-weight: bold;
   border-bottom: 1px solid grey;
 }
 
-.mainPlayListBox {
-  margin-left: 5px;
-  min-width: 184px;
-  max-width: 184px;
-}
-
 .addPLBox {
-  max-width: 95px;
+  max-width: 80px;
   min-height: 20px;
   font-size: 12px;
   margin-top: 1px;
