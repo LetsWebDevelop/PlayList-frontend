@@ -40,14 +40,17 @@
 .selectPlaylist {
   cursor: pointer;
   font-style: italic;
+  font-size: 12px;
+  border-bottom: 1px solid grey;
 }
 
 .green {
+  font-size: 14px;
   color: rgb(143, 5, 143);
 }
 
 .grey {
-  color: grey;
+  font-size: 14px;
 }
 
 .title {
