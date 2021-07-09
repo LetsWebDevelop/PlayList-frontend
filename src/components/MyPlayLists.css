@@ -12,8 +12,8 @@
 
 .playlistBox {
   text-align: left;
-  max-height: 62vh;
-  min-height: 62vh;
+  max-height: 60vh;
+  min-height: 60vh;
   overflow: auto;
   direction: rtl;
   padding-left: 4px;
