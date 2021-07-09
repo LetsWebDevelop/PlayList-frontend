@@ -6,7 +6,7 @@
   top: 0;
   left: 0;
 }
- 
+
 .box {
   position: relative;
   width: 20%;
@@ -14,20 +14,20 @@
   height: auto;
   max-height: 50vh;
   margin-top: calc(100vh - 85vh - 20px);
-  background: #fff;
+  background: rgb(42, 40, 46);
   border-radius: 4px;
   padding: 20px;
   border: 1px solid #999;
   overflow: auto;
 }
- 
+
 .close-icon {
-  content: 'x';
+  content: "x";
   cursor: pointer;
   position: fixed;
   right: calc(40% - 30px);
   top: calc(100vh - 85vh - 33px);
-  background: #ededed;
+  background: rgb(42, 40, 46);
   width: 25px;
   height: 25px;
   border-radius: 50%;
@@ -43,14 +43,13 @@
 }
 
 .green {
-    color: green;
+  color: rgb(143, 5, 143);
 }
 
 .grey {
-    color: grey;
+  color: grey;
 }
 
 .title {
-    color: black;
-    font-weight: bold;
+  font-weight: bold;
 }
