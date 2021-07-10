@@ -7,7 +7,11 @@ import "./MyPlayLists.css";
 
 import { selectUser, selectUserToken } from "../store/user/selectors";
 import { selectPlaylists } from "../store/Playlists/selectors";
-import { fetchPlaylists, createNewPlaylist } from "../store/Playlists/actions";
+import {
+  fetchPlaylists,
+  createNewPlaylist,
+  deletePlaylist,
+} from "../store/Playlists/actions";
 import { fetchPlaylistByID } from "../store/PlaylistByID/actions";
 import { clearSpotifyMusic } from "../store/spotifyMusic/actions";
 
@@ -60,15 +64,18 @@ export default function MyPlayLists() {
       <div className="playlistBox">
         {playlists.map((playlist) => {
           return (
-            <div
-              className="clickBox"
-              key={playlist.id}
-              onClick={() => {
-                dispatch(fetchPlaylistByID(playlist.id));
-                dispatch(clearSpotifyMusic());
-              }}
-            >
-              <p>{`${playlist.name}`}</p>
+            <div className="clickBox" key={playlist.id}>
+              <button onClick={() => dispatch(deletePlaylist(playlist.id))}>
+                -
+              </button>
+              <button
+                onClick={() => {
+                  dispatch(fetchPlaylistByID(playlist.id));
+                  dispatch(clearSpotifyMusic());
+                }}
+              >
+                {`${playlist.name}`}{" "}
+              </button>
             </div>
           );
         })}

@@ -31,16 +31,15 @@ export default function PlayListComponent() {
         )}
         {songs?.map((song) => {
           return (
-            <>
+            <div key={song.id}>
               <MusicComponent
-                key={song.id}
                 uri={song.uri}
                 img={song.image}
                 title={song.title}
                 artist={song.artist}
                 songs={songs}
               />
-            </>
+            </div>
           );
         })}
       </div>
