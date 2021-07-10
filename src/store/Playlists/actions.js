@@ -5,7 +5,7 @@ import { selectUserToken } from "../user/selectors";
 
 export const FETCH_PLAYLISTS_SUCCES = "FETCH_PLAYLISTS_SUCCES";
 export const CREATE_PLAYLIST = "CREATE_PLAYLIST";
-
+export const DELETE_PLAYLIST = "DELETE_PLAYLIST";
 export const fetchPlaylistSucces = (playlists) => {
   return {
     type: FETCH_PLAYLISTS_SUCCES,
@@ -17,6 +17,13 @@ export const playListCreated = (newPlaylist) => {
   return {
     type: CREATE_PLAYLIST,
     payload: newPlaylist,
+  };
+};
+
+export const playlistDELETED = (playlistID) => {
+  return {
+    type: DELETE_PLAYLIST,
+    payload: playlistID,
   };
 };
 
@@ -72,6 +79,31 @@ export const createNewPlaylist = (name) => {
       console.log("Error:", error);
 
       dispatch(appDoneLoading());
+    }
+  };
+};
+
+export const deletePlaylist = (playlistID) => {
+  return async (dispatch, getState) => {
+    dispatch(appLoading());
+
+    try {
+      const userToken = selectUserToken(getState());
+
+      const response = await axios.delete(
+        `${apiUrl}/playlist/${playlistID}/delete`,
+        {
+          headers: {
+            Authorization: `Bearer ${userToken}`,
+          },
+        },
+      );
+      console.log("Delete playlist RESPONSE:", response);
+      dispatch(playlistDELETED(playlistID));
+
+      dispatch(appDoneLoading());
+    } catch (error) {
+      console.log("Error:", error);
     }
   };
 };
