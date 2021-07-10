@@ -9,9 +9,7 @@ import { selectSPOTIFYToken } from "../store/spotifyToken/selectors";
 export default function SpotifyLoginButton() {
   const CLIENT_ID = client_ID;
   const SPOTIFY_AUTHORIZE_ENDPOINT = "https://accounts.spotify.com/authorize";
-  const REDIRECT_URL =
-    "http://localhost:3000/spotifyredirect" ||
-    "https://playlist99.netlify.app/spotifyredirect";
+  const REDIRECT_URL = "https://playlist99.netlify.app/spotifyredirect";
   const SPACE_DELIMITER = "%20";
   const SCOPES = [
     "streaming",
