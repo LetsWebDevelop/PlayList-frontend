@@ -1,0 +1,72 @@
+.addSongButtonBox {
+  /* max-width: 60px; */
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-start;
+  flex-direction: row;
+  margin-top: 0.5vh;
+  margin-left: 5px;
+}
+
+.addSongButtonStyle {
+  margin-bottom: 5px;
+  border: none;
+  border-radius: 5%;
+  border-bottom: 1px solid grey;
+  font-size: 120%;
+  font-weight: bold;
+  color: rgb(194, 188, 207);
+  background-color: rgb(143, 5, 143);
+  cursor: pointer;
+}
+
+.logoutButton {
+  font-weight: bold;
+  font-size: 10px;
+  max-height: 2vh;
+  border: none;
+  border-radius: 5%;
+  border-bottom: 1px solid grey;
+  color: rgb(194, 188, 207);
+  background-color: rgb(143, 5, 143);
+  cursor: pointer;
+}
+
+.spotifyButtonRed {
+  font-size: 10px;
+  max-height: 2vh;
+  font-weight: bold;
+  border: none;
+  border-radius: 5%;
+  border-bottom: 1px solid grey;
+  color: rgb(238, 235, 235);
+  background-color: rgb(248, 8, 8);
+  cursor: pointer;
+}
+
+.spotifyButtonGreen {
+  font-size: 10px;
+  max-height: 2vh;
+  font-weight: bold;
+  border: none;
+  border-radius: 2%;
+  border-bottom: 1px solid grey;
+  color: rgb(194, 188, 207);
+  background-color: rgb(143, 5, 143);
+  cursor: pointer;
+}
+
+.playAllButton {
+  max-height: 2vh;
+  min-height: 2vh;
+  margin-left: 15px;
+  margin-bottom: 5px;
+  font-size: 10px;
+  font-weight: bold;
+  border: none;
+  border-radius: 5%;
+  border-bottom: 1px solid grey;
+  cursor: pointer;
+  color: rgb(194, 188, 207);
+  background-color: rgb(143, 5, 143);
+}

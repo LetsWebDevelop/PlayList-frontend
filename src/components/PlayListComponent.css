@@ -1,0 +1,47 @@
+.mainBoxPL {
+  display: flex;
+  flex-wrap: wrap;
+  text-align: left;
+  font-size: 50%;
+  margin-right: 20px;
+  margin-left: 10px;
+  max-height: 74vh;
+  min-height: 74vh;
+  overflow-y: auto;
+}
+.mainBoxPL::-webkit-scrollbar {
+  display: none;
+}
+
+.musicBoxPL {
+  display: flex;
+  border-bottom: 1px solid grey;
+  max-height: 18vh;
+
+  max-width: 75vw;
+  min-width: 60vw;
+  overflow-y: hidden;
+  overflow-x: hidden;
+}
+
+.playSongPL {
+  cursor: pointer;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.songTitleArtistBoxPL {
+  margin-left: 3px;
+}
+
+.defaultTitleTextPL {
+  font-size: 140%;
+  margin-top: 5px;
+}
+
+.defaultArtistTextPL {
+  font-size: 120%;
+  margin-top: 2px;
+  margin-bottom: 2px;
+  margin-left: 5px;
+}

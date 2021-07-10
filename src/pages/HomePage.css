@@ -1,0 +1,6 @@
+.homeBox {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  flex-shrink: initial;
+}

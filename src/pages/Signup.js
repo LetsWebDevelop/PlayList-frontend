@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from "react";
-import { login } from "../store/user/actions";
+import { signUp } from "../store/user/actions";
 import { selectUserToken } from "../store/user/selectors";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, Link } from "react-router-dom";
 
-import "./Login.css";
+import "./Signup.css";
 
-export default function LoginPage() {
+export default function SignupPage() {
+  const [userName, setUserName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -23,24 +24,34 @@ export default function LoginPage() {
   const submitForm = (event) => {
     event.preventDefault();
 
-    dispatch(login(email, password));
+    dispatch(signUp(userName, email, password));
 
+    setUserName("");
     setEmail("");
     setPassword("");
   };
+
   return (
     <div>
-      <h1>Login to PlayList</h1>
+      <h1>Signup Page</h1>
 
       <form onSubmit={submitForm}>
-        <div className="mainBoxLogin">
+        <div className="mainBoxSignup">
+          <input
+            value={userName}
+            onChange={(event) => setUserName(event.target.value)}
+            type="text"
+            placeholder="Username"
+            required
+            className="alignSelfSignup"
+          ></input>
           <input
             value={email}
             onChange={(event) => setEmail(event.target.value)}
             type="email"
-            placeholder="Email"
+            placeholder="email"
             required
-            className="alignSelf"
+            className="alignSelfSignup"
           ></input>
           <input
             value={password}
@@ -48,14 +59,14 @@ export default function LoginPage() {
             type="password"
             placeholder="password"
             required
-            className="alignSelf"
+            className="alignSelfSignup"
           ></input>
-          <button type="submit" onClick={submitForm} className="loginButton">
-            Login
+          <button type="submit" onClick={submitForm} className="signupButton">
+            Submit
           </button>
-          <div className="Link">
-            <Link to="/signup" className="noDecoration">
-              Signup here
+          <div className="LinkSignup">
+            <Link to="/login" className="noDecorationSignup">
+              Click here to log in
             </Link>
           </div>
         </div>
