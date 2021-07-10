@@ -17,6 +17,7 @@
   display: flex;
   border-bottom: 1px solid grey;
   max-height: 18vh;
+
   max-width: 75vw;
   min-width: 60vw;
   overflow-y: hidden;
@@ -25,7 +26,8 @@
 
 .playSongPL {
   cursor: pointer;
-  padding: 5px;
+  padding-top: 5px;
+  padding-bottom: 5px;
 }
 
 .songTitleArtistBoxPL {
@@ -33,7 +35,7 @@
 }
 
 .defaultTitleTextPL {
-  font-size: 160%;
+  font-size: 140%;
   margin-top: 5px;
 }
 
