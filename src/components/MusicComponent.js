@@ -4,6 +4,7 @@ import { setSpotifySong } from "../store/playSong/actions";
 
 import "./PlayListComponent.css";
 import AddSongButton from "./AddSongButton";
+import { deleteSong } from "../store/PlaylistByID/actions";
 
 export default function MusicComponent(props) {
   const dispatch = useDispatch();
@@ -162,6 +163,9 @@ export default function MusicComponent(props) {
             tracksTop50={addSongTop50}
             image={props.img}
           />
+        )}
+        {props.songs && (
+          <button onClick={() => dispatch(deleteSong(props.id))}>test</button>
         )}
       </div>
     </div>

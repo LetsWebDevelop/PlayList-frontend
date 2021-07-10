@@ -6,6 +6,7 @@ import { selectUserToken } from "../user/selectors";
 export const FETCH_PLAYLISTBYID_SUCCES = "FETCH_PLAYLISTBYID_SUCCES";
 export const ADD_SONG_SUCCES = "ADD_SONG_SUCCES";
 export const CLEAR_PLAYLISTBYID = "CLEAR_PLAYLSITBYID";
+export const DELETE_SONG = "DELETE_SONG";
 
 export const fetchPlaylistByIdSucces = (playlistByID) => {
   return {
@@ -28,6 +29,13 @@ export const addSongSucces = (song) => {
   };
 };
 
+export const deleteSongSucces = (songId) => {
+  return {
+    type: DELETE_SONG,
+    payload: songId,
+  };
+};
+
 export const fetchPlaylistByID = (playlistID) => {
   return async (dispatch, getState) => {
     dispatch(appLoading());
@@ -40,6 +48,7 @@ export const fetchPlaylistByID = (playlistID) => {
           Authorization: `Bearer ${userToken}`,
         },
       });
+      console.log("playlistByID:", response.data.playlists);
       dispatch(fetchPlaylistByIdSucces(response.data.playlists));
       dispatch(appDoneLoading());
     } catch (error) {
@@ -71,6 +80,30 @@ export const addSong = (title, artist, image, uri, origin, playlistId) => {
         },
       );
       console.log("Add Song RESPONSE:", response.data);
+      dispatch(appDoneLoading());
+    } catch (error) {
+      console.log("Error:", error);
+    }
+  };
+};
+
+export const deleteSong = (songId) => {
+  return async (dispatch, getState) => {
+    dispatch(appLoading());
+
+    try {
+      const userToken = selectUserToken(getState());
+
+      const response = await axios.delete(
+        `${apiUrl}/playlist/song/${songId}/delete`,
+        {
+          headers: {
+            Authorization: `Bearer ${userToken}`,
+          },
+        },
+      );
+      console.log("DELETE Song RESPONSE:", response);
+      dispatch(deleteSongSucces(songId));
       dispatch(appDoneLoading());
     } catch (error) {
       console.log("Error:", error);
