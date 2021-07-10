@@ -3,11 +3,11 @@ import { useSelector } from "react-redux";
 
 import "../components/ButtonStyles.css";
 
-import { client_id } from "../secrets/spotify";
+import { client_ID } from "../secrets/spotify";
 import { selectSPOTIFYToken } from "../store/spotifyToken/selectors";
 
 export default function SpotifyLoginButton() {
-  const CLIENT_ID = client_id;
+  const CLIENT_ID = client_ID;
   const SPOTIFY_AUTHORIZE_ENDPOINT = "https://accounts.spotify.com/authorize";
   const REDIRECT_URL = "http://localhost:3000/spotifyredirect";
   const SPACE_DELIMITER = "%20";
