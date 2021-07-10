@@ -30,14 +30,17 @@
   max-width: 80px;
   min-height: 20px;
   font-size: 10px;
+  font-weight: bold;
   margin-top: 5px;
   color: rgb(194, 188, 207);
   border: none;
   background-color: transparent;
+  outline: none;
 }
 
 .searchBox:focus {
   border: none;
   background-color: transparent;
+  outline: 1px solid;
   outline-color: rgb(143, 5, 143);
 }
