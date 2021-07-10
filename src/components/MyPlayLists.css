@@ -1,15 +1,33 @@
 .mainPlayListBox {
-  margin-left: 2px;
+  margin-left: 5px;
   min-width: 35vw;
   max-width: 35vw;
 }
 .clickBox {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
   font-size: 10px;
   font-style: italic;
   border-bottom: 1px solid grey;
+}
+.deletePLButton {
+  margin-left: auto;
+  font-size: 20px;
+  border: none;
+  font-weight: bold;
+  color: rgb(143, 5, 143);
+  background-color: transparent;
   cursor: pointer;
 }
-
+.PLButton {
+  text-align: left;
+  border: none;
+  font-style: italic;
+  color: rgb(194, 188, 207);
+  background-color: transparent;
+  cursor: pointer;
+}
 .playlistBox {
   text-align: left;
   max-height: 60vh;

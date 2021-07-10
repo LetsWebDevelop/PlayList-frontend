@@ -65,7 +65,10 @@ export default function MyPlayLists() {
         {playlists.map((playlist) => {
           return (
             <div className="clickBox" key={playlist.id}>
-              <button onClick={() => dispatch(deletePlaylist(playlist.id))}>
+              <button
+                onClick={() => dispatch(deletePlaylist(playlist.id))}
+                className="deletePLButton"
+              >
                 -
               </button>
               <button
@@ -73,6 +76,7 @@ export default function MyPlayLists() {
                   dispatch(fetchPlaylistByID(playlist.id));
                   dispatch(clearSpotifyMusic());
                 }}
+                className="PLButton"
               >
                 {`${playlist.name}`}{" "}
               </button>
