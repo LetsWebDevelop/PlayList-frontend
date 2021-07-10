@@ -33,6 +33,7 @@ export default function PlayListComponent() {
           return (
             <div key={song.id}>
               <MusicComponent
+                id={song.id}
                 uri={song.uri}
                 img={song.image}
                 title={song.title}
